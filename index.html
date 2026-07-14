@@ -707,7 +707,7 @@
 
       <div class="space-y-4">
         <div class="text-white font-semibold text-[13px] tracking-widest uppercase">Direct Bookings</div>
-        <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B" target="_blank" class="inline-flex items-center justify-center gap-2 h-11 px-6 w-full rounded-full bg-[#128C7E] text-white font-semibold text-[13.5px] hover:bg-[#075E54]">
+        <a href="https://wa.me/256776506052?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B" target="_blank" class="inline-flex items-center justify-center gap-2 h-11 px-6 w-full rounded-full bg-[#128C7E] text-white font-semibold text-[13.5px] hover:bg-[#075E54]">
           <span>Chat on WhatsApp</span>
         </a>
       </div>
@@ -727,13 +727,13 @@
         id: "standard",
         name: "Standard Comfort Room",
         price: 120000,
-        tag: "Standard",
+        tag: "Budget",
         guests: 2,
         beds: 1,
         baths: 1,
         size: "25 m²",
         img: "14.png",
-        facilities: ["Bathtub", "High Speed Wi-Fi", "Daily Buffet Breakfast"],
+        facilities: ["Bathroom ", "Room Service", "Single Bed"],
       },
       {
         id: "deluxe",
@@ -745,7 +745,7 @@
         baths: 1,
         size: "32 m²",
         img: "17.png",
-        facilities: ["Premium Bathtub", "Balcony View", "Smart TV"],
+        facilities: ["Room Service", "Balcony View", "Mini Fridge"],
       },
       {
         id: "exec",
@@ -757,7 +757,7 @@
         baths: 2,
         size: "45 m²",
         img: "16.png",
-        facilities: ["Luxury Jacuzzi", "VIP Lounge Access", "All Meals Included"],
+        facilities: ["Room Service", "Mini Fridge", "All Meals Included"],
       },
       {
         id: "family",
@@ -769,7 +769,7 @@
         baths: 2,
         size: "60 m²",
         img: "17.png",
-        facilities: ["Connecting Rooms", "Kitchenette", "All Meals Included"],
+        facilities: ["Mini Fridge", "Room Service", "All Meals Included"],
       }
     ];
 
@@ -975,7 +975,7 @@
       }
 
       const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to book:\n🏨 Suite Type: ${selectedRoom.name}\n👥 Guests: ${guestCount.adults} Adults, ${guestCount.children} Children\n👤 Name: ${name}\n📞 Contact: ${phone || 'None'}\n📝 Special Requests: ${requests || 'None'}\n\nPlease confirm availability. Thank you!`;
-      window.open(`https://wa.me/256761422899?text=${encodeURIComponent(text)}`, "_blank");
+      window.open(`https://wa.me/256776506052?text=${encodeURIComponent(text)}`, "_blank");
       closeBookingModal();
     }
 
@@ -1129,12 +1129,12 @@
       
       const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to request an official event quotation:\n\n⭐ Event Type: ${activePlanner.toUpperCase()}\n📅 Target Date: ${document.getElementById('event-date').value}\n👥 Expected Guests: ${plannerGuests} Guests\n💰 Target Budget: UGX ${plannerBudget.toLocaleString()}\n💸 Est. Quotation: ${document.getElementById('estimated-total').innerText}\n\n🛠️ Services Chosen:\n${servicesList.map(s => ` - ${s}`).join('\n')}\n\nPlease share official catalog packages.`;
       
-      window.open(`https://wa.me/256761422899?text=${encodeURIComponent(text)}`, "_blank");
+      window.open(`https://wa.me/256776506052?text=${encodeURIComponent(text)}`, "_blank");
     }
 
     // ==================== CONCIERGE CHAT SIMULATOR ====================
     let chatHistory = [
-      { role: "model", text: "Mwiriwe (Good evening) and welcome to Mbarara Grand Holiday Hotel! ♔ I am Grand Host, your virtual concierge.\n\nI am here to guide you in choosing the perfect luxury suite, estimating wedding or conference budgets, or planning tours around Mbarara (including Lake Mburo safaris!). How can I help you today?" }
+      { role: "model", text: "Good evening and welcome to Mbarara Grand Holiday Hotel! ♔ I am Grand Host, your virtual concierge.\n\nI am here to guide you in choosing the perfect luxury suite, estimating wedding or conference budgets, or planning tours around Mbarara (including Lake Mburo safaris!). How can I help you today?" }
     ];
 
     function renderChatLogs() {
