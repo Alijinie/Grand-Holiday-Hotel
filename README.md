@@ -6,7 +6,6 @@
 
 This contains everything you need to run your app locally.
 
-Another one with Google Devs I/O: https://ai.studio/apps/ab72aca1-e9ff-4182-a45c-8edbc8c4aea0
 
 ## Run Locally use Electron Chromium Wrapper
 
