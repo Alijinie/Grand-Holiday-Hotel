@@ -1,0 +1,6 @@
+{
+  "name": "Mbarara Grand Holiday Hotel",
+  "description": "Premium luxury landing page, event planner and AI concierge for Mbarara Grand Holiday Hotel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

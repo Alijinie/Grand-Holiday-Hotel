@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mbarara Grand Holiday Hotel | Single File Interactive Web App</title>
+  
+  <!-- Fonts & Tailwind CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FFFBF2;
+      color: #0A1E3C;
+    }
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Hide scrollbar for category selector */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Smooth transition */
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 250ms;
+    }
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 251, 242, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#C6A15A]/30 flex flex-col min-h-screen">
+
+  <!-- TOP BANNER BAR -->
+  <div class="bg-[#07152B] text-white/80 text-[12px] py-2 border-b border-white/10 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-2">
+      <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 sm:gap-6">
+        <span class="flex items-center gap-1.5 font-medium">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
+          <span>0761 422 899 / 0776 506 052</span>
+        </span>
+        <span class="hidden sm:flex items-center gap-1.5">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
+          <span>Near Tatitwe, Mbarara City</span>
+        </span>
+        <span class="hidden md:flex items-center gap-1.5 text-white/40">|</span>
+        <span class="hidden md:flex items-center gap-1.5">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
+          <span>Open 24 Hours</span>
+        </span>
+      </div>
+      <div class="hidden lg:flex items-center gap-4 text-[#C6A15A] font-semibold tracking-wider text-[10px] uppercase">
+        <span>Free High Speed Wi-Fi</span>
+        <span>•</span>
+        <span>Secure Parking</span>
+        <span>•</span>
+        <span>24/7 Security Patrols</span>
+        <span>•</span>
+        <span>Therapeutic Spa</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/90 glass border-b border-black/5 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between">
+      
+      <!-- Brand Logo Block -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+        <div class="relative w-12 h-12 rounded-xl bg-[#0A1E3C] flex flex-col items-center justify-center shadow-md border border-[#C6A15A]/20">
+          <span class="text-[#D4AF37] text-[9px] font-bold tracking-widest leading-none -mt-1">♔</span>
+          <span class="font-serif font-extrabold text-white tracking-widest text-[16px]">GH</span>
+          <div class="absolute -bottom-1.5 flex gap-[1.5px]">
+            <span class="w-1 h-1 bg-[#D4AF37] rounded-full"></span>
+            <span class="w-1 h-1 bg-[#D4AF37] rounded-full"></span>
+            <span class="w-1 h-1 bg-[#D4AF37] rounded-full"></span>
+          </div>
+        </div>
+        <div class="leading-tight">
+          <div class="font-serif font-black text-[13px] tracking-[0.14em] text-[#0A1E3C]">MBARARA GRAND</div>
+          <div class="font-serif font-black text-[13px] tracking-[0.14em] text-[#0A1E3C] -mt-1">HOLIDAY HOTEL</div>
+          <div class="text-[9px] tracking-[0.24em] text-[#C6A15A] font-bold uppercase">The Perfect Getaway</div>
+        </div>
+      </div>
+
+      <!-- Tab Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-1 bg-[#FFFBF2] p-1.5 rounded-full border border-black/5">
+        <button id="nav-home" onclick="switchTab('home')" class="flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm">
+          <i data-lucide="hotel" class="w-3.5 h-3.5 text-[#D4AF37]"></i>
+          Rooms & Booking
+        </button>
+        <button id="nav-planner" onclick="switchTab('planner')" class="flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all text-[#0A1E3C]/70 hover:text-[#0A1E3C] hover:bg-black/5">
+          <i data-lucide="calendar-days" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
+          Event Planner
+        </button>
+        <button id="nav-concierge" onclick="switchTab('concierge')" class="flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all text-[#0A1E3C]/70 hover:text-[#0A1E3C] hover:bg-black/5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
+          AI Concierge
+        </button>
+      </nav>
+
+      <!-- Right Contact Action -->
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" class="hidden sm:inline-flex items-center gap-2 h-10 px-5 rounded-full bg-[#128C7E] text-white text-[13px] font-semibold hover:bg-[#075E54] shadow-sm transition-all">
+          <span class="font-serif text-[15px] text-[#D4AF37]">💬</span>
+          <span>Book on WhatsApp</span>
+        </a>
+        <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-[#0A1E3C]">
+          <i id="menu-icon" data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-white px-4 py-4 space-y-2">
+      <button onclick="switchTab('home')" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-white bg-[#0A1E3C]">
+        <i data-lucide="hotel" class="w-4 h-4 text-[#D4AF37]"></i>
+        <span class="flex-1 text-left">Rooms & Booking</span>
+      </button>
+      <button onclick="switchTab('planner')" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
+        <i data-lucide="calendar-days" class="w-4 h-4 text-[#C6A15A]"></i>
+        <span class="flex-1 text-left">Event Planner</span>
+      </button>
+      <button onclick="switchTab('concierge')" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
+        <i data-lucide="sparkles" class="w-4 h-4 text-[#C6A15A]"></i>
+        <span class="flex-1 text-left">AI Concierge</span>
+      </button>
+      <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" class="w-full flex h-12 items-center justify-center gap-2 rounded-full bg-[#128C7E] text-white text-[14px] font-semibold shadow-md mt-4">
+        <span>💬 Book instantly via WhatsApp</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- TOAST NOTIFICATION BANNER -->
+    <div id="toast-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0A1E3C] text-white px-5 py-3 rounded-full text-xs font-semibold shadow-2xl flex items-center gap-2 border border-[#C6A15A]/40 hidden">
+      <i data-lucide="sparkles" class="w-4 h-4 text-[#D4AF37] animate-pulse"></i>
+      <span id="toast-message">Listing category details</span>
+    </div>
+
+    <!-- ==================== TAB 1: HOME (ROOMS & BOOKING) ==================== -->
+    <div id="tab-home" class="tab-content">
+      
+      <!-- HERO -->
+      <section class="relative overflow-hidden bg-[#07152B] text-white">
+        <div class="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600" alt="Mbarara Grand" class="w-full h-full object-cover opacity-35" />
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07152B] via-[#07152B]/85 to-transparent"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[11px] font-bold tracking-widest uppercase">
+              <span class="w-2 h-2 bg-[#D4AF37] rounded-full animate-ping"></span>
+              <span>Near Tatitwe • Mbarara City</span>
+              <span class="ml-1 text-[#D4AF37]">4.9 ★</span>
+            </div>
+            <h1 class="font-serif text-[40px] sm:text-[52px] lg:text-[60px] font-black leading-[1.05] tracking-tight">
+              The Perfect<br />Getaway in<br />
+              <span class="text-[#D4AF37] relative inline-block">
+                Mbarara City
+                <span class="absolute left-0 bottom-1 w-full h-[3px] bg-gradient-to-r from-[#D4AF37] to-transparent"></span>
+              </span>
+            </h1>
+            <p class="text-[14.5px] sm:text-[16px] text-white/80 leading-relaxed max-w-lg">
+              Indulge in unmatched luxury, premium modern suites, therapeutic massage lounges, exquisite menus, and elegant event gardens in the heart of Mbarara, Western Uganda.
+            </p>
+            <div class="pt-4 flex flex-wrap gap-4 text-[13px]">
+              <div class="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                <span class="text-xl">🏆</span>
+                <div>
+                  <div class="font-bold">4.9 / 5 Rating</div>
+                  <div className="text-[10px] text-white/50">Based on 320+ reviews</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                <span class="text-xl">🏨</span>
+                <div>
+                  <div class="font-bold">120+ Rooms</div>
+                  <div class="text-[10px] text-white/50">Premium suites</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stay Form Right -->
+          <div class="lg:col-span-5 relative">
+            <div class="bg-white rounded-[28px] shadow-[0_24px_64px_rgba(7,21,43,0.3)] border border-white/60 text-[#0a1e3c] overflow-hidden">
+              <div class="p-6 sm:p-7 space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-black/5">
+                  <div>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-[#C6A15A]">Instant direct booking</span>
+                    <h3 class="font-serif text-[20px] font-bold mt-0.5">Check Stay Availability</h3>
+                  </div>
+                  <span class="w-8 h-8 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] flex items-center justify-center text-[#C6A15A] text-sm">✦</span>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Destination Location</label>
+                  <div class="h-11 rounded-xl border border-black/10 bg-[#FFFBF2]/50 flex items-center px-3.5 gap-2.5">
+                    <i data-lucide="map-pin" class="w-4 h-4 text-[#C6A15A]"></i>
+                    <span class="text-[13px] font-semibold text-black/85">Mbarara Grand Holiday Hotel, Uganda</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Check In</label>
+                    <div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3">
+                      <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#C6A15A] mr-2 shrink-0"></i>
+                      <input type="date" id="check-in-date" class="bg-transparent text-[12.5px] font-medium outline-none w-full text-black/85" />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Check Out</label>
+                    <div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3">
+                      <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#C6A15A] mr-2 shrink-0"></i>
+                      <input type="date" id="check-out-date" class="bg-transparent text-[12.5px] font-medium outline-none w-full text-black/85" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Guests occupancy -->
+                <div class="relative">
+                  <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Total Guests & Occupancy</label>
+                  <button type="button" onclick="toggleGuestPicker()" class="w-full h-11 rounded-xl border border-black/10 bg-white px-3.5 flex items-center justify-between text-[13px] font-semibold text-black/85 shadow-sm hover:border-black/25">
+                    <span class="flex items-center gap-2">
+                      <i data-lucide="users" class="w-4 h-4 text-[#C6A15A]"></i>
+                      <span id="guest-occupancy-summary">2 Guests</span>
+                    </span>
+                    <span class="text-black/30 text-xs">▼</span>
+                  </button>
+
+                  <!-- Guest counter popover dropdown -->
+                  <div id="guest-picker-dropdown" class="hidden absolute z-20 left-0 right-0 mt-2 bg-white rounded-2xl border border-black/5 shadow-2xl p-4 space-y-3.5">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-[13px] font-bold">Adults</div>
+                        <div class="text-[10px] text-black/45">Age 13 or older</div>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <button type="button" onclick="changeGuest('adults', -1)" class="w-7 h-7 rounded-full border border-black/10 flex items-center justify-center text-sm font-bold hover:bg-black/5">-</button>
+                        <span id="count-adults" class="text-sm font-bold w-4 text-center">2</span>
+                        <button type="button" onclick="changeGuest('adults', 1)" class="w-7 h-7 rounded-full bg-[#0A1E3C] text-white flex items-center justify-center text-sm font-bold">+</button>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-[13px] font-bold">Children</div>
+                        <div class="text-[10px] text-black/45">Ages 2 to 12</div>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <button type="button" onclick="changeGuest('children', -1)" class="w-7 h-7 rounded-full border border-black/10 flex items-center justify-center text-sm font-bold hover:bg-black/5">-</button>
+                        <span id="count-children" class="text-sm font-bold w-4 text-center">1</span>
+                        <button type="button" onclick="changeGuest('children', 1)" class="w-7 h-7 rounded-full bg-[#0A1E3C] text-white flex items-center justify-center text-sm font-bold">+</button>
+                      </div>
+                    </div>
+                    <button type="button" onclick="toggleGuestPicker()" class="w-full h-10 mt-2 rounded-xl bg-[#FFFBF2] border border-[#E9DFC7] text-[#C6A15A] text-[12px] font-bold hover:bg-[#C6A15A]/10">Apply Occupancy</button>
+                  </div>
+                </div>
+
+                <button onclick="checkRoomAvailability()" class="w-full h-12 rounded-xl bg-[#0A1E3C] text-white font-bold flex items-center justify-center gap-2 hover:bg-[#07152B] shadow-md transition-all group">
+                  <span>Check Availability on WhatsApp</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-all"></i>
+                </button>
+                <div class="text-center text-[11px] text-black/45">✦ Pre-filled direct chat inquiry • Instant response 24/7</div>
+              </div>
+              <div class="h-1.5 bg-gradient-to-r from-[#D4AF37] via-[#C6A15A] to-[#E9D39A]"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ROOMS DIRECTORY GRID -->
+      <section id="rooms-grid-section" class="pt-16 sm:pt-24 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-5 pb-8 border-b border-black/5">
+          <div class="space-y-2">
+            <div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#C6A15A]">Luxury Accommodation Collection</div>
+            <h2 class="font-serif text-[32px] sm:text-[38px] font-extrabold text-[#0A1E3C] leading-none">Find Your Premium Stay</h2>
+            <p class="text-[13px] text-black/55 max-w-md">Every booking includes complimentary organic buffet breakfasts, fast Wi-Fi, swimming pool entrance, and private parking.</p>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+            <button onclick="filterRooms('Popular')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white border border-[#0A1E3C]">Popular</button>
+            <button onclick="filterRooms('Standard')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Standard</button>
+            <button onclick="filterRooms('Deluxe')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Deluxe</button>
+            <button onclick="filterRooms('Executive')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Executive</button>
+            <button onclick="filterRooms('Family')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Family</button>
+          </div>
+        </div>
+
+        <!-- Rendered Rooms Cards -->
+        <div id="rooms-list" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Dynamically Rendered -->
+        </div>
+      </section>
+
+      <!-- RESORT SPOTLIGHT DETAILS -->
+      <section class="pt-20 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="rounded-[32px] bg-[#0A1E3C] text-white p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-[#D4AF37]/15 blur-[60px] pointer-events-none"></div>
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-5 space-y-4">
+              <div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#D4AF37]">The Grand Resort Experience</div>
+              <h2 class="font-serif text-[28px] sm:text-[36px] font-bold leading-tight">Premium services tailored for your ultimate relaxation</h2>
+              <p class="text-[13.5px] text-white/70 leading-relaxed">Enjoy world-class amenities within the hotel compound. Pamper your senses at our modern therapeutic spa, or savor organic Ugandan specialties cooked by award-winning chefs.</p>
+              <div class="pt-2 flex flex-wrap gap-2 text-[11px]">
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15">✔ Organic Buffet Breakfast Included</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15">✔ 24/7 Security Patrols</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm">
+                <span class="text-2xl">💆‍♀️</span>
+                <div class="font-bold text-[14px]">Spa & Massages</div>
+                <div class="text-[11.5px] text-white/50 leading-normal">Unwind with Swedish, deep-tissue and local aromatherapies.</div>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm">
+                <span class="text-2xl">🍽️</span>
+                <div class="font-bold text-[14px]">Fine Dining</div>
+                <div class="text-[11.5px] text-white/50 leading-normal">Gourmet restaurant serving local and continental delicacies.</div>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm">
+                <span class="text-2xl">🏊‍♂️</span>
+                <div class="font-bold text-[14px]">Swimming Pool</div>
+                <div class="text-[11.5px] text-white/50 leading-normal">Sparkling Olympic-sized clean pool with sun loungers.</div>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm">
+                <span class="text-2xl">📶</span>
+                <div class="font-bold text-[14px]">Free Ultra Wi-Fi</div>
+                <div class="text-[11.5px] text-white/50 leading-normal">High-speed fiber connectivity in every suite and garden.</div>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm">
+                <span class="text-2xl">🅿️</span>
+                <div class="font-bold text-[14px]">Secure Parking</div>
+                <div class="text-[11.5px] text-white/50 leading-normal">Spacious parking space protected by CCTV and round-the-clock guards.</div>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm">
+                <span class="text-2xl">🌿</span>
+                <div class="font-bold text-[14px]">Scenic Gardens</div>
+                <div class="text-[11.5px] text-white/50 leading-normal">Lush manicured fields perfect for wedding parties and quiet walks.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-black/5 p-6 sm:p-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="text-[#D4AF37] text-xl font-bold">★★★★★</div>
+            <p class="font-serif text-[18px] sm:text-[20px] text-[#0A1E3C] font-medium leading-relaxed italic">
+              "We had a marvelous weekend at Mbarara Grand Holiday Hotel. The suites are spacious and sparkling clean, and the wedding reception setup in the garden was absolutely magical. The customer service was exceptionally helpful."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 mt-6 border-t border-black/5 pt-4">
+            <div class="w-10 h-10 rounded-full bg-[#C6A15A]/20 flex items-center justify-center font-bold text-[#0A1E3C]">AM</div>
+            <div>
+              <div class="text-[13px] font-bold text-[#0A1E3C]">Aisha Mutoni</div>
+              <div class="text-[11px] text-black/45">Kampala, Uganda</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-[#0A1E3C] text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-3">
+            <div class="text-[11px] tracking-widest uppercase font-bold text-[#D4AF37]">Location Finder</div>
+            <h3 class="font-serif text-[22px] font-bold">Easy Access Mbarara</h3>
+            <p class="text-[13px] text-white/70 leading-relaxed">
+              Located Near Tatitwe, Mbarara City. Extremely convenient for travellers headed to Queen Elizabeth or Lake Mburo parks, with secure automated perimeter lighting.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <a href="https://maps.google.com/?q=Mbarara+Grand+Hotel+Near+Tatitwe" target="_blank" class="h-10 px-5 rounded-full bg-white text-[#0A1E3C] font-bold text-[12.5px] flex items-center gap-1.5 shadow-sm hover:bg-[#FFFBF2]">
+              <i data-lucide="map" class="w-4 h-4 text-[#C6A15A]"></i>
+              <span>Open in Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==================== TAB 2: EVENT PLANNER ==================== -->
+    <div id="tab-planner" class="tab-content hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-2 mb-10">
+          <div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#C6A15A]">Uganda's Premier Celebrations Venue</div>
+          <h2 class="font-serif text-[34px] sm:text-[44px] font-extrabold leading-tight">Grand Event & Venue Planner</h2>
+          <p class="text-[13.5px] text-black/55">Plan weddings, birthdays, or company retreats with ease. Toggle your guest count and required services below to get an instant budget estimate.</p>
+        </div>
+
+        <!-- Planner category picker -->
+        <div class="flex items-center justify-center gap-2 max-w-md mx-auto bg-white p-1 rounded-full border border-black/5 shadow-sm mb-12">
+          <button onclick="setEventPlanner('wedding')" id="plan-btn-wedding" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm">
+            💍 Wedding Party
+          </button>
+          <button onclick="setEventPlanner('birthday')" id="plan-btn-birthday" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5">
+            🎈 Birthday Bash
+          </button>
+          <button onclick="setEventPlanner('retreat')" id="plan-btn-retreat" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5">
+            🏢 Retreat
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Planner Controls (7 cols) -->
+          <div class="lg:col-span-7 bg-white rounded-3xl border border-black/5 shadow-sm p-6 sm:p-8 space-y-6">
+            <div>
+              <h3 id="planner-title" class="font-serif text-[22px] font-bold text-[#0A1E3C]">Plan Your Dream Garden Wedding</h3>
+              <p class="text-[12.5px] text-black/50 mt-1">Customize key event configurations. All packages include secure compound parking and dedicated reception coordination assistance.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Target Event Date</label>
+                <div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#C6A15A] mr-2"></i>
+                  <input type="date" id="event-date" class="bg-transparent text-[13px] font-semibold outline-none w-full text-black/85" />
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55">Target Guest Size</label>
+                  <span id="guest-count-badge" class="text-[12.5px] font-extrabold text-[#C6A15A]">150 Guests</span>
+                </div>
+                <div class="relative h-11 rounded-xl border border-black/10 bg-[#FFFBF2]/40 flex items-center px-3.5">
+                  <i data-lucide="users" class="w-3.5 h-3.5 text-[#C6A15A] mr-3 shrink-0"></i>
+                  <input type="range" id="planner-guests-slider" min="10" max="300" value="150" oninput="updateGuestsVal(this.value)" class="w-full h-1.5 bg-black/10 rounded-lg appearance-none cursor-pointer accent-[#0A1E3C]" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Target Budget Limit (UGX)</label>
+              <div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3.5">
+                <span class="text-black/40 text-xs font-bold mr-2">UGX</span>
+                <input type="number" id="planner-budget-input" value="12000000" oninput="updateBudgetVal(this.value)" class="bg-transparent text-[13px] font-bold outline-none w-full text-black/85" />
+              </div>
+            </div>
+
+            <div class="space-y-3.5">
+              <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-2">Required Services Packages</label>
+              <div id="planner-services-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Dynamically Rendered Service Toggle Buttons -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Quotation side panel (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-[#0A1E3C] text-white rounded-[28px] shadow-[0_24px_50px_rgba(7,21,43,0.18)] border border-white/10 overflow-hidden">
+              <div class="p-6 sm:p-7 space-y-5">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest font-bold text-[#D4AF37]">Budget Analysis</span>
+                  <h4 class="font-serif text-[18px] font-bold">Quotation Estimate</h4>
+                  <div class="text-[11px] text-white/50 mt-1">Estimations calculated using base resort tariffs</div>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-center items-center text-center space-y-1">
+                  <span class="text-[10px] uppercase tracking-widest font-bold text-white/40">Estimated Total Cost</span>
+                  <span id="estimated-total" class="font-serif text-[28px] sm:text-[32px] font-black text-[#D4AF37]">UGX 0</span>
+                  <span id="estimated-total-details" class="text-[11px] text-white/60">Based on 150 guests</span>
+                </div>
+
+                <!-- Budget Status Alert Banner -->
+                <div id="budget-alert-banner" class="p-4 rounded-2xl border flex items-start gap-3 text-[12.5px]">
+                  <!-- Injected via JS -->
+                </div>
+
+                <div class="space-y-2">
+                  <div class="text-[11px] font-bold tracking-wider uppercase text-white/40">Detailed Breakdown</div>
+                  <div id="planner-breakdown-list" class="space-y-1.5 max-h-[160px] overflow-y-auto pr-1">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+
+                <button onclick="sendEventQuoteToWhatsApp()" class="w-full h-12 rounded-xl bg-[#128C7E] text-white font-bold text-[13.5px] hover:bg-[#075E54] flex items-center justify-center gap-2 shadow-lg transition-all">
+                  <span>💬 Request WhatsApp Quote</span>
+                </button>
+              </div>
+              <div class="h-1.5 bg-gradient-to-r from-[#D4AF37] via-[#C6A15A] to-[#E9D39A]"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: CONCIERGE CHAT ==================== -->
+    <div id="tab-concierge" class="tab-content hidden">
+      <div class="max-w-4xl mx-auto px-4 py-12">
+        
+        <div class="text-center space-y-2 mb-8">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C6A15A]/10 border border-[#C6A15A]/35 text-[11px] font-bold text-[#C6A15A] uppercase tracking-wider">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>AI Powered Resort Butler</span>
+          </div>
+          <h2 class="font-serif text-[32px] sm:text-[38px] font-extrabold text-[#0A1E3C]">Meet Grand Host</h2>
+          <p class="text-[13px] text-black/55 max-w-lg mx-auto">Ask our smart virtual host anything about room availability, event spaces, spa amenities, or tourist destinations in Mbarara.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-black/5 shadow-xl overflow-hidden flex flex-col h-[560px] relative">
+          
+          <div class="bg-[#0A1E3C] text-white p-4 flex items-center justify-between border-b border-white/5">
+            <div class="flex items-center gap-3">
+              <div class="relative w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center font-serif font-extrabold text-[#D4AF37]">
+                GH
+                <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#128C7E] rounded-full border-2 border-[#0A1E3C]"></span>
+              </div>
+              <div>
+                <div class="text-[13px] font-bold tracking-wide flex items-center gap-1.5">
+                  <span>Grand Host Concierge</span>
+                  <span class="text-[10px] bg-[#D4AF37] text-[#0A1E3C] font-extrabold px-1.5 py-0.5 rounded uppercase">AI</span>
+                </div>
+                <div class="text-[10.5px] text-white/50">Online • Warm Ankole Hospitality</div>
+              </div>
+            </div>
+            <button onclick="clearChatHistory()" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/5">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Message Stream -->
+          <div id="chat-messages-container" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-[#FFFBF2]/30">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Suggestion pills bar -->
+          <div class="px-4 py-2 bg-[#FFFBF2]/50 border-t border-black/5 flex items-center gap-2 overflow-x-auto no-scrollbar">
+            <span class="text-[10px] uppercase tracking-wider font-extrabold text-black/35 shrink-0">Suggestions:</span>
+            <button onclick="sendSuggestionChat('List luxury rooms, rates, and breakfast inclusions')" class="h-7 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-[#0A1E3C]/80 shrink-0">🏨 Rooms & Rates</button>
+            <button onclick="sendSuggestionChat('Plan a 2-day Mbarara safari tour itinerary including Lake Mburo National Park')" class="h-7 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-[#0A1E3C]/80 shrink-0">🦓 Safari Itinerary</button>
+            <button onclick="sendSuggestionChat('What spa, therapeutic massage, and swimming pool amenities do you have?')" class="h-7 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-[#0A1E3C]/80 shrink-0">💆‍♀️ Massage & Spa</button>
+          </div>
+
+          <!-- Chat input form -->
+          <form id="chat-input-form" onsubmit="handleChatSubmit(event)" class="p-3 bg-white border-t border-black/5 flex items-center gap-2">
+            <input type="text" id="chat-user-input" placeholder="Ask about rooms, wedding planning, Mbarara tourist spots..." class="flex-1 h-11 px-4 text-[13px] bg-[#FFFBF2]/50 border border-black/10 rounded-xl outline-none focus:border-[#C6A15A]" />
+            <button type="submit" class="w-11 h-11 rounded-xl bg-[#0A1E3C] text-white flex items-center justify-center hover:bg-[#C6A15A]">
+              <i data-lucide="send" class="w-4 h-4 text-[#D4AF37]"></i>
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BOOKING CONFIRMATION POPUP MODAL -->
+  <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div onclick="closeBookingModal()" class="absolute inset-0 bg-[#07152B]/75 backdrop-blur-xs"></div>
+    
+    <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-black/5 overflow-hidden z-10">
+      <div class="p-6 pb-4 border-b border-black/5 flex justify-between items-start">
+        <div>
+          <span class="text-[10px] uppercase tracking-widest font-extrabold text-[#C6A15A]">Reservation Checkout</span>
+          <h3 class="font-serif text-[22px] font-bold text-[#0A1E3C]">Confirm Suite Booking</h3>
+        </div>
+        <button onclick="closeBookingModal()" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black/50 hover:text-black">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4">
+        <!-- Room Detail summary -->
+        <div class="p-4 rounded-2xl bg-[#FFFBF2] border border-[#E9DFC7]/80 flex gap-4 items-center">
+          <img id="modal-room-img" src="" alt="Room" class="w-20 h-20 rounded-xl object-cover border border-[#E9DFC7]/60" />
+          <div>
+            <span id="modal-room-tag" class="text-[9px] bg-[#0A1E3C] text-white font-bold px-2 py-0.5 rounded uppercase tracking-wider">Standard</span>
+            <h4 id="modal-room-name" class="font-serif text-[15px] font-bold text-[#0A1E3C] mt-1">Suite</h4>
+            <div id="modal-room-price" class="text-[12px] font-bold text-[#C6A15A]">UGX 120,000 / night</div>
+          </div>
+        </div>
+
+        <div class="space-y-3.5">
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Guest Full Name (Required)</label>
+            <input type="text" id="modal-guest-name" placeholder="John Kampala" class="w-full h-11 px-4 border border-black/10 rounded-xl outline-none focus:border-[#C6A15A] text-[13px] font-semibold text-black/85" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Mobile Phone (Optional)</label>
+            <input type="tel" id="modal-guest-phone" placeholder="e.g. +256 700 000 000" class="w-full h-11 px-4 border border-black/10 rounded-xl outline-none focus:border-[#C6A15A] text-[13px] font-semibold text-black/85" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Special Requests (Optional)</label>
+            <textarea id="modal-guest-requests" placeholder="e.g. Vegan breakfast option, baby cot..." class="w-full h-16 p-3 border border-black/10 rounded-xl outline-none focus:border-[#C6A15A] text-[13px] font-medium resize-none text-black/85"></textarea>
+          </div>
+        </div>
+
+        <button onclick="submitRoomBooking()" class="w-full h-12 rounded-xl bg-[#128C7E] text-white font-bold text-[13.5px] hover:bg-[#075E54] flex items-center justify-center gap-2">
+          <span>Confirm Stay on WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIVERSAL FOOTER -->
+  <footer class="bg-[#07152B] text-white/75 mt-auto border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center font-serif font-black text-white text-[15px] tracking-wider">GH</div>
+          <div>
+            <div class="font-serif font-bold text-white tracking-wide text-[13px] leading-tight">MBARARA GRAND HOLIDAY HOTEL</div>
+            <div class="text-[10px] tracking-[0.2em] text-[#D4AF37] uppercase font-bold leading-none">The Perfect Getaway</div>
+          </div>
+        </div>
+        <p class="text-[13px] leading-6 text-white/55 max-w-sm">Experience premium luxury, uncompromised comfort, and authentic Ugandan hospitality in the heart of Mbarara City. Book directly on WhatsApp.</p>
+      </div>
+
+      <div>
+        <div class="text-white font-semibold text-[13px] tracking-widest uppercase mb-4">Contact Details</div>
+        <ul class="space-y-3 text-[13px] text-white/60">
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="phone" class="w-4 h-4 text-[#C6A15A] shrink-0 mt-0.5"></i>
+            <div>
+              <p>+256 761 422 899</p>
+              <p>+256 776 506 052</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="map-pin" class="w-4 h-4 text-[#C6A15A] shrink-0 mt-0.5"></i>
+            <span>Near Tatitwe, Mbarara City, Uganda</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-white font-semibold text-[13px] tracking-widest uppercase mb-4">Hours of Operation</div>
+        <ul class="space-y-3 text-[13px] text-white/60">
+          <li class="flex justify-between border-b border-white/5 pb-1.5">
+            <span>Hotel Reception</span>
+            <span class="font-medium text-[#D4AF37]">Open 24 Hours</span>
+          </li>
+          <li class="flex justify-between border-b border-white/5 pb-1.5">
+            <span>Grand Restaurant</span>
+            <span>6:30 AM - 11:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-4">
+        <div class="text-white font-semibold text-[13px] tracking-widest uppercase">Direct Bookings</div>
+        <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B" target="_blank" class="inline-flex items-center justify-center gap-2 h-11 px-6 w-full rounded-full bg-[#128C7E] text-white font-semibold text-[13.5px] hover:bg-[#075E54]">
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <div class="border-t border-white/10 bg-[#040e1e] py-4 text-center text-[11px] text-white/40">
+      &copy; 2026 Mbarara Grand Holiday Hotel. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Lucide icons package development script -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    // Factual room dataset
+    const ROOMS_DATA = [
+      {
+        id: "standard",
+        name: "Standard Comfort Room",
+        price: 120000,
+        tag: "Standard",
+        guests: 2,
+        beds: 1,
+        baths: 1,
+        size: "25 m²",
+        img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800",
+        facilities: ["Bathtub", "High Speed Wi-Fi", "Daily Buffet Breakfast"],
+      },
+      {
+        id: "deluxe",
+        name: "Deluxe Executive Room",
+        price: 180000,
+        tag: "Deluxe",
+        guests: 2,
+        beds: 1,
+        baths: 1,
+        size: "32 m²",
+        img: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800",
+        facilities: ["Premium Bathtub", "Balcony View", "Smart TV"],
+      },
+      {
+        id: "exec",
+        name: "Grand Executive Suite",
+        price: 280000,
+        tag: "Executive",
+        guests: 3,
+        beds: 1,
+        baths: 2,
+        size: "45 m²",
+        img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=800",
+        facilities: ["Luxury Jacuzzi", "VIP Lounge Access", "All Meals Included"],
+      },
+      {
+        id: "family",
+        name: "Grand Family Suite",
+        price: 350000,
+        tag: "Family",
+        guests: 5,
+        beds: 2,
+        baths: 2,
+        size: "60 m²",
+        img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=800",
+        facilities: ["Connecting Rooms", "Kitchenette", "All Meals Included"],
+      }
+    ];
+
+    // State Variables
+    let currentCategory = "Popular";
+    let activePlanner = "wedding";
+    let selectedRoom = null;
+    let guestCount = { adults: 2, children: 1 };
+    
+    // Services pricing lists
+    const SERVICES_DATA = {
+      wedding: [
+        { id: "venue", name: "Grand Garden Venue Hire", price: 1500000, icon: "🌳" },
+        { id: "decor", name: "Premium Floral Decor & Lighting", price: 1200000, icon: "✨" },
+        { id: "catering", name: "Organic Buffet (Per Guest)", price: 40000, icon: "🍛", perGuest: true },
+        { id: "sound", name: "PA System & Dedicated DJ", price: 600000, icon: "🔊" }
+      ],
+      birthday: [
+        { id: "venue", name: "Poolside Venue Venue Hire", price: 400000, icon: "🏊‍♂️" },
+        { id: "decor", name: "Colorful Balloons decor", price: 300000, icon: "🎈" },
+        { id: "catering", name: "Drinks & Bites (Per Guest)", price: 25000, icon: "🍹", perGuest: true },
+        { id: "cake", name: "Custom 3-Tier Grand Cake", price: 450000, icon: "🎂" }
+      ],
+      retreat: [
+        { id: "hall", name: "Conference Hall Venue Hire", price: 800000, icon: "🏢" },
+        { id: "meals", name: "Buffet & Coffee teas (Per Guest)", price: 35000, icon: "☕", perGuest: true },
+        { id: "rooms", name: "Overnight Shared Twin Rooms (Per Guest)", price: 70000, icon: "🛌", perGuest: true }
+      ]
+    };
+
+    let selectedServices = {
+      wedding: ["venue", "decor", "catering"],
+      birthday: ["venue", "catering", "cake"],
+      retreat: ["hall", "meals"]
+    };
+
+    let plannerGuests = 150;
+    let plannerBudget = 12000000;
+
+    // Initialize Page
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set Date inputs to today/tomorrow as defaults
+      const today = new Date().toISOString().split('T')[0];
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tomorrowStr = tomorrow.toISOString().split('T')[0];
+
+      document.getElementById("check-in-date").value = today;
+      document.getElementById("check-out-date").value = tomorrowStr;
+      document.getElementById("event-date").value = today;
+
+      renderRooms();
+      setEventPlanner("wedding");
+      renderChatLogs();
+      lucide.createIcons();
+    });
+
+    // Toast Trigger
+    function triggerToast(message) {
+      const banner = document.getElementById("toast-banner");
+      document.getElementById("toast-message").innerText = message;
+      banner.classList.remove("hidden");
+      setTimeout(() => banner.classList.add("hidden"), 3000);
+    }
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-content").forEach(el => el.classList.add("hidden"));
+      document.getElementById(`tab-${tabId}`).classList.remove("hidden");
+
+      // Active states for nav buttons
+      const navs = ["home", "planner", "concierge"];
+      navs.forEach(n => {
+        const btn = document.getElementById(`nav-${n}`);
+        if (n === tabId) {
+          btn.className = "flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm";
+          btn.querySelector('i').style.color = "#D4AF37";
+        } else {
+          btn.className = "flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all text-[#0A1E3C]/70 hover:text-[#0A1E3C] hover:bg-black/5";
+          btn.querySelector('i').style.color = "#C6A15A";
+        }
+      });
+
+      document.getElementById("mobile-menu").classList.add("hidden");
+      triggerToast(`Switched to ${tabId === "home" ? "Rooms" : tabId === "planner" ? "Planner" : "Concierge"}`);
+    }
+
+    function toggleMobileMenu() {
+      const m = document.getElementById("mobile-menu");
+      m.classList.toggle("hidden");
+    }
+
+    // Toggle guest picker dropdown
+    function toggleGuestPicker() {
+      const drop = document.getElementById("guest-picker-dropdown");
+      drop.classList.toggle("hidden");
+    }
+
+    function changeGuest(type, step) {
+      const minVal = type === "adults" ? 1 : 0;
+      guestCount[type] = Math.max(minVal, Math.min(10, guestCount[type] + step));
+      document.getElementById(`count-${type}`).innerText = guestCount[type];
+      
+      const total = guestCount.adults + guestCount.children;
+      document.getElementById("guest-occupancy-summary").innerText = `${total} Guest${total > 1 ? 's' : ''}`;
+    }
+
+    function checkRoomAvailability() {
+      const ci = document.getElementById("check-in-date").value;
+      const co = document.getElementById("check-out-date").value;
+      
+      if (new Date(co) <= new Date(ci)) {
+        triggerToast("Check-out date must follow Check-in.");
+        return;
+      }
+
+      const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI want to check room availability:\n📅 Check-In: ${ci}\n📅 Check-Out: ${co}\n👥 Guests: ${guestCount.adults} Adults, ${guestCount.children} Children\n\nPlease advise.`;
+      window.open(`https://wa.me/256761422899?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    // Render Rooms Grid
+    function renderRooms() {
+      const container = document.getElementById("rooms-list");
+      container.innerHTML = "";
+
+      const list = currentCategory === "Popular" ? ROOMS_DATA : ROOMS_DATA.filter(r => r.tag === currentCategory);
+
+      list.forEach(room => {
+        const card = document.createElement("div");
+        card.className = "group bg-white rounded-3xl overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-all flex flex-col";
+        card.innerHTML = `
+          <div class="relative h-[210px] overflow-hidden bg-black/10">
+            <img src="${room.img}" alt="${room.name}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
+            <div class="absolute top-3.5 left-3.5 px-2.5 h-6 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-[#0A1E3C] flex items-center gap-1 shadow-sm">
+              <span>⭐ 4.9</span>
+            </div>
+            <div class="absolute top-3.5 right-3.5 px-2.5 h-6 rounded-full bg-[#0A1E3C]/90 text-white text-[10px] font-bold tracking-wider uppercase flex items-center border border-white/20">
+              ${room.tag}
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-1.5">
+              <h3 class="font-serif text-[17px] font-bold text-[#0A1E3C] leading-snug group-hover:text-[#C6A15A] transition-colors">${room.name}</h3>
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11.5px] text-black/50">
+                <span>👥 ${room.guests} Guests</span>
+                <span class="w-1 h-1 bg-black/15 rounded-full"></span>
+                <span>🛏️ ${room.beds} Bed</span>
+                <span class="w-1 h-1 bg-black/15 rounded-full"></span>
+                <span>📐 ${room.size}</span>
+              </div>
+            </div>
+            <div class="flex items-end justify-between pt-2 border-t border-black/5">
+              <div>
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-black/35">Per Night Stay</span>
+                <span class="font-serif text-[17px] font-extrabold text-[#0A1E3C]">UGX ${room.price.toLocaleString()}</span>
+              </div>
+              <button onclick="openBookingModal('${room.id}')" class="h-9 px-4 rounded-full bg-[#0A1E3C] text-white text-[12.5px] font-bold hover:bg-[#C6A15A] transition-all">
+                Book Now
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterRooms(cat) {
+      currentCategory = cat;
+      document.querySelectorAll(".room-pill").forEach(el => {
+        if (el.innerText === cat) {
+          el.className = "room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white border border-[#0A1E3C]";
+        } else {
+          el.className = "room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30";
+        }
+      });
+      renderRooms();
+      triggerToast(`${cat} room suites loaded`);
+    }
+
+    // Modal Control
+    function openBookingModal(roomId) {
+      selectedRoom = ROOMS_DATA.find(r => r.id === roomId);
+      document.getElementById("modal-room-img").src = selectedRoom.img;
+      document.getElementById("modal-room-name").innerText = selectedRoom.name;
+      document.getElementById("modal-room-tag").innerText = selectedRoom.tag;
+      document.getElementById("modal-room-price").innerText = `UGX ${selectedRoom.price.toLocaleString()} / night`;
+      
+      document.getElementById("booking-modal").classList.remove("hidden");
+    }
+
+    function closeBookingModal() {
+      document.getElementById("booking-modal").classList.add("hidden");
+    }
+
+    function submitRoomBooking() {
+      const name = document.getElementById("modal-guest-name").value.trim();
+      const phone = document.getElementById("modal-guest-phone").value.trim();
+      const requests = document.getElementById("modal-guest-requests").value.trim();
+
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to book:\n🏨 Suite Type: ${selectedRoom.name}\n👥 Guests: ${guestCount.adults} Adults, ${guestCount.children} Children\n👤 Name: ${name}\n📞 Contact: ${phone || 'None'}\n📝 Special Requests: ${requests || 'None'}\n\nPlease confirm availability. Thank you!`;
+      window.open(`https://wa.me/256761422899?text=${encodeURIComponent(text)}`, "_blank");
+      closeBookingModal();
+    }
+
+    // ==================== PLANNER TAB CONTROLS ====================
+    function setEventPlanner(type) {
+      activePlanner = type;
+      
+      // Update buttons style
+      const ptypes = ["wedding", "birthday", "retreat"];
+      ptypes.forEach(p => {
+        const btn = document.getElementById(`plan-btn-${p}`);
+        if (p === type) {
+          btn.className = "flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm";
+        } else {
+          btn.className = "flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5";
+        }
+      });
+
+      // Update Slider limits
+      const slider = document.getElementById("planner-guests-slider");
+      if (type === "wedding") {
+        document.getElementById("planner-title").innerText = "Plan Your Dream Garden Wedding";
+        slider.max = "300";
+        plannerGuests = 150;
+        plannerBudget = 12000000;
+      } else if (type === "birthday") {
+        document.getElementById("planner-title").innerText = "Plan Your Custom Poolside Birthday Party";
+        slider.max = "150";
+        plannerGuests = 60;
+        plannerBudget = 3500000;
+      } else {
+        document.getElementById("planner-title").innerText = "Plan Your Corporate Retreat / Seminar";
+        slider.max = "200";
+        plannerGuests = 40;
+        plannerBudget = 7500000;
+      }
+      
+      slider.value = plannerGuests;
+      document.getElementById("guest-count-badge").innerText = `${plannerGuests} Guests`;
+      document.getElementById("planner-budget-input").value = plannerBudget;
+
+      renderPlannerServices();
+      calculatePlannerTotal();
+    }
+
+    function renderPlannerServices() {
+      const container = document.getElementById("planner-services-container");
+      container.innerHTML = "";
+
+      const services = SERVICES_DATA[activePlanner];
+      const selected = selectedServices[activePlanner];
+
+      services.forEach(svc => {
+        const isChecked = selected.includes(svc.id);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.onclick = () => togglePlannerService(svc.id);
+        button.className = `flex items-center text-left gap-3 p-3.5 rounded-2xl border transition-all ${
+          isChecked ? "bg-[#0A1E3C]/5 border-[#0A1E3C] shadow-sm" : "bg-white border-black/10 hover:border-black/25"
+        }`;
+        button.innerHTML = `
+          <span class="text-xl shrink-0">${svc.icon}</span>
+          <div class="flex-1 min-w-0">
+            <div class="text-[12.5px] font-bold truncate text-[#0A1E3C]">${svc.name}</div>
+            <div class="text-[11px] text-black/45">
+              UGX ${svc.price.toLocaleString()}${svc.perGuest ? ' / guest' : ''}
+            </div>
+          </div>
+          <span class="w-4 h-4 rounded-full border shrink-0 flex items-center justify-center text-[10px] ${
+            isChecked ? 'bg-[#0A1E3C] border-[#0A1E3C] text-white' : 'border-black/25 bg-white'
+          }">
+            ${isChecked ? '✓' : ''}
+          </span>
+        `;
+        container.appendChild(button);
+      });
+    }
+
+    function togglePlannerService(svcId) {
+      let list = selectedServices[activePlanner];
+      if (list.includes(svcId)) {
+        list = list.filter(id => id !== svcId);
+      } else {
+        list.push(svcId);
+      }
+      selectedServices[activePlanner] = list;
+      renderPlannerServices();
+      calculatePlannerTotal();
+    }
+
+    function updateGuestsVal(val) {
+      plannerGuests = parseInt(val);
+      document.getElementById("guest-count-badge").innerText = `${plannerGuests} Guests`;
+      calculatePlannerTotal();
+    }
+
+    function updateBudgetVal(val) {
+      plannerBudget = parseInt(val) || 0;
+      calculatePlannerTotal();
+    }
+
+    function calculatePlannerTotal() {
+      const services = SERVICES_DATA[activePlanner];
+      const selected = selectedServices[activePlanner];
+      let total = 0;
+
+      const listContainer = document.getElementById("planner-breakdown-list");
+      listContainer.innerHTML = "";
+
+      services.forEach(svc => {
+        if (selected.includes(svc.id)) {
+          const cost = svc.perGuest ? svc.price * plannerGuests : svc.price;
+          total += cost;
+
+          const row = document.createElement("div");
+          row.className = "flex justify-between items-center text-[12px] text-white/70";
+          row.innerHTML = `
+            <span>${svc.icon} ${svc.name}</span>
+            <span class="font-bold text-white">UGX ${cost.toLocaleString()}</span>
+          `;
+          listContainer.appendChild(row);
+        }
+      });
+
+      document.getElementById("estimated-total").innerText = `UGX ${total.toLocaleString()}`;
+      document.getElementById("estimated-total-details").innerText = `Based on ${plannerGuests} Guests`;
+
+      // Render Alert banner
+      const alertContainer = document.getElementById("budget-alert-banner");
+      const isSufficient = plannerBudget >= total;
+
+      if (isSufficient) {
+        alertContainer.className = "p-4 rounded-2xl border flex items-start gap-3 text-[12.5px] bg-[#128C7E]/10 border-[#128C7E]/30 text-white";
+        alertContainer.innerHTML = `
+          <div class="font-bold">✓ Budget is Sufficient!</div>
+          <div class="text-[11.5px] opacity-75">Your target budget of UGX ${plannerBudget.toLocaleString()} easily covers this quotation estimate. You are good to request!</div>
+        `;
+      } else {
+        alertContainer.className = "p-4 rounded-2xl border flex items-start gap-3 text-[12.5px] bg-red-500/10 border-red-500/30 text-red-100";
+        alertContainer.innerHTML = `
+          <div class="font-bold">⚠ Over Budget Plan</div>
+          <div class="text-[11.5px] opacity-75">Your budget is short of the estimation by UGX ${(total - plannerBudget).toLocaleString()}. Consider adjusting guests or services.</div>
+        `;
+      }
+    }
+
+    function sendEventQuoteToWhatsApp() {
+      const servicesList = SERVICES_DATA[activePlanner]
+        .filter(s => selectedServices[activePlanner].includes(s.id))
+        .map(s => s.name);
+      
+      const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to request an official event quotation:\n\n⭐ Event Type: ${activePlanner.toUpperCase()}\n📅 Target Date: ${document.getElementById('event-date').value}\n👥 Expected Guests: ${plannerGuests} Guests\n💰 Target Budget: UGX ${plannerBudget.toLocaleString()}\n💸 Est. Quotation: ${document.getElementById('estimated-total').innerText}\n\n🛠️ Services Chosen:\n${servicesList.map(s => ` - ${s}`).join('\n')}\n\nPlease share official catalog packages.`;
+      
+      window.open(`https://wa.me/256761422899?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    // ==================== CONCIERGE CHAT SIMULATOR ====================
+    let chatHistory = [
+      { role: "model", text: "Mwiriwe (Good evening) and welcome to Mbarara Grand Holiday Hotel! ♔ I am Grand Host, your virtual concierge.\n\nI am here to guide you in choosing the perfect luxury suite, estimating wedding or conference budgets, or planning tours around Mbarara (including Lake Mburo safaris!). How can I help you today?" }
+    ];
+
+    function renderChatLogs() {
+      const container = document.getElementById("chat-messages-container");
+      container.innerHTML = "";
+
+      chatHistory.forEach(msg => {
+        const row = document.createElement("div");
+        const isUser = msg.role === "user";
+        row.className = `flex items-start gap-2.5 max-w-[85%] ${isUser ? 'ml-auto flex-row-reverse' : 'mr-auto'}`;
+        
+        row.innerHTML = `
+          ${!isUser ? '<div class="w-8 h-8 rounded-lg bg-[#0A1E3C] text-white font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#D4AF37]/35">GH</div>' : ''}
+          <div class="p-4 rounded-2xl text-[13px] sm:text-[13.5px] leading-relaxed whitespace-pre-wrap shadow-sm ${
+            isUser ? "bg-[#0A1E3C] text-white rounded-tr-none" : "bg-white border border-black/5 text-black/85 rounded-tl-none font-medium"
+          }">
+            ${msg.text}
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      // Scroll to bottom
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function sendSuggestionChat(prompt) {
+      chatHistory.push({ role: "user", text: prompt });
+      renderChatLogs();
+      triggerAiReply(prompt);
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("chat-user-input");
+      const val = input.value.trim();
+      if (!val) return;
+
+      chatHistory.push({ role: "user", text: val });
+      renderChatLogs();
+      input.value = "";
+
+      triggerAiReply(val);
+    }
+
+    function triggerAiReply(userPrompt) {
+      // Simulate highly realistic grand host helpful concierge advice
+      setTimeout(() => {
+        let reply = "That is a wonderful question! ♔ At Mbarara Grand Holiday Hotel, we pride ourselves on luxurious comfort and warm Ankole hospitality.";
+        
+        const q = userPrompt.toLowerCase();
+        if (q.includes("room") || q.includes("rate") || q.includes("stay") || q.includes("price")) {
+          reply = `Here are our premium accommodation packages available for direct booking:\n\n1. 🛌 **Standard Comfort Room** (UGX 120,000 / night)\n- Perfect for 2 guests, features double bed and smart TV.\n\n2. 🛀 **Deluxe Executive Room** (UGX 180,000 / night)\n- King bed, luxury bathtub, and private balcony with views!\n\n3. 💎 **Grand Executive Suite** (UGX 280,000 / night)\n- Luxury Jacuzzi, minibar, VIP lounge access and all meals included!\n\nEvery stay includes our complimentary organic breakfast buffet, high-speed Wi-Fi, swimming pool entrance, and private parking.`;
+        } else if (q.includes("safari") || q.includes("tour") || q.includes("mburo") || q.includes("park") || q.includes("itinerary")) {
+          reply = `🦓 **Custom 2-Day Mbarara & Lake Mburo Safari Itinerary:**\n\n- **Day 1: Cultural & Wildlife Arrival**\nMorning: Visit the Igongo Cultural Museum to sample traditional Eshabwe and explore ancient Ankole kingdom history. Afternoon: 45 mins scenic drive to Lake Mburo National Park. Enjoy an evening boat safari to spot hippos, crocodiles and beautiful water birds.\n\n- **Day 2: Game Drive & Eclipse Monument**\nEarly Morning: Sunrise game drive to spot majestic impalas, buffaloes, zebras and leopards. Afternoon: Visit Biharwe Hill to see the 15th-century Eclipse Monument. Evening: Retreat to our hotel therapeutic massage spa lounge.\n\nWould you like me to book an airport shuttle or tour guide for you?`;
+        } else if (q.includes("spa") || q.includes("massage") || q.includes("pool") || q.includes("wellness")) {
+          reply = `💆‍♀️ **Wellness, Spa & Recreation Club:**\n\nOur property features a tranquil oasis to escape and rejuvenate your body:\n\n- **Grand Therapeutic Spa**: Swedish massages, deep tissue rubdowns, organic essential oils, and hot stone therapies. Open daily from 9:00 AM to 10:00 PM.\n- **Olympic Swimming Pool**: Deep sparkling clean waters with luxury poolside recliners and a dedicated children's splash pool.\n- **Gourmet Cocktail Lounge**: Rehydrate after your massage with fresh organic fruit juices or craft local cocktails!\n\nSpa sessions can be reserved directly with reception.`;
+        } else if (q.includes("wedding") || q.includes("event") || q.includes("garden") || q.includes("planner")) {
+          reply = `💍 **Grand Weddings & Celebrations Gardens:**\n\nWe feature one of Mbarara City's most scenic manicured gardens, fitting up to 300 seated wedding guests comfortably.\n\nOur full celebration packages include:\n- Floral garden arch decorations and cozy string fairy lighting.\n- Custom professional PA Sound system and dedicated Event DJ.\n- Gourmet multi-course organic buffet catering cooked on-site.\n- Custom multi-tier celebration baking and bulk overnight accommodation discounts.\n\nUse our Event Planner tab to get an instant estimate and consult our coordinator directly!`;
+        } else {
+          reply = `Thank you for reaching out! ♔ I would be delighted to coordinate your inquiries. Mbarara Grand Holiday Hotel is located Near Tatitwe, Mbarara City. We feature organic restaurant dining, luxury suites, therapeutic spas and secure CCTV perimeter parking.\n\nWould you like to book a stay, plan a wedding event, or coordinate a safari excursion to Lake Mburo? Let me know!`;
+        }
+
+        chatHistory.push({ role: "model", text: reply });
+        renderChatLogs();
+      }, 1000);
+    }
+
+    function clearChatHistory() {
+      if (confirm("Reset conversation logs with Grand Host?")) {
+        chatHistory = [
+          { role: "model", text: "Welcome back! ♔ Chat history is refreshed. How may I assist you with rooms, wedding planning, or Lake Mburo tours today?" }
+        ];
+        renderChatLogs();
+      }
+    }
+  </script>
+
+</body>
+</html>

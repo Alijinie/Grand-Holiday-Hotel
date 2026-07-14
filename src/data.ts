@@ -1,0 +1,60 @@
+import { Room } from "./types";
+
+export const ROOMS: Room[] = [
+  {
+    id: "standard",
+    name: "Standard Comfort Room",
+    price: 120000,
+    tag: "Standard",
+    guests: 2,
+    beds: 1,
+    baths: 1,
+    size: "25 m²",
+    img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800",
+    facilities: ["Bathtub", "High Speed Wi-Fi", "Daily Buffet Breakfast", "Air Conditioning"],
+  },
+  {
+    id: "deluxe",
+    name: "Deluxe Executive Room",
+    price: 180000,
+    tag: "Deluxe",
+    guests: 2,
+    beds: 1,
+    baths: 1,
+    size: "32 m²",
+    img: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800",
+    facilities: ["Premium Bathtub", "High Speed Wi-Fi", "Daily Buffet Breakfast", "Balcony View", "Smart TV"],
+  },
+  {
+    id: "exec",
+    name: "Grand Executive Suite",
+    price: 280000,
+    tag: "Executive",
+    guests: 3,
+    beds: 1,
+    baths: 2,
+    size: "45 m²",
+    img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=800",
+    facilities: ["Luxury Jacuzzi", "High Speed Wi-Fi", "All Meals Included", "VIP Lounge Access", "Mini Bar"],
+  },
+  {
+    id: "family",
+    name: "Grand Family Suite",
+    price: 350000,
+    tag: "Family",
+    guests: 5,
+    beds: 2,
+    baths: 2,
+    size: "60 m²",
+    img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=800",
+    facilities: ["Connecting Rooms", "High Speed Wi-Fi", "All Meals Included", "Kitchenette", "Kids Play Area Access"],
+  },
+];
+
+export const HOTEL_INFO = {
+  phonePrimary: "+256 761 422 899",
+  phoneSecondary: "+256 776 506 052",
+  whatsappNumber: "256761422899",
+  location: "Near Tatitwe, Mbarara City, Uganda",
+  googleMapsLink: "https://maps.google.com/?q=Mbarara+Grand+Hotel+Near+Tatitwe",
+};
