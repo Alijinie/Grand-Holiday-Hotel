@@ -104,7 +104,6 @@
   </div>
 
   <!-- NAVIGATION HEADER -->
-  <!-- NAVIGATION HEADER -->
   <header class="sticky top-0 z-40 bg-white/90 glass border-b border-black/5 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between">
       
@@ -136,6 +135,10 @@
           <i data-lucide="calendar-days" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
           Event Planner
         </button>
+        <button id="nav-concierge" onclick="switchTab('concierge')" class="flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all text-[#0A1E3C]/70 hover:text-[#0A1E3C] hover:bg-black/5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#C6A15A]"></i>
+          AI Concierge
+        </button>
       </nav>
 
       <!-- Right Contact Action -->
@@ -150,21 +153,26 @@
       </div>
     </div>
 
-    <!-- Mobile menu drawer (Closes layout automatically onclick) -->
+    <!-- Mobile menu drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-white px-4 py-4 space-y-2">
-      <button onclick="switchTab('home'); toggleMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-white bg-[#0A1E3C]">
+      <button onclick="switchTab('home')" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-white bg-[#0A1E3C]">
         <i data-lucide="hotel" class="w-4 h-4 text-[#D4AF37]"></i>
         <span class="flex-1 text-left">Rooms & Booking</span>
       </button>
-      <button onclick="switchTab('planner'); toggleMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
+      <button onclick="switchTab('planner')" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
         <i data-lucide="calendar-days" class="w-4 h-4 text-[#C6A15A]"></i>
         <span class="flex-1 text-left">Event Planner</span>
       </button>
-      <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" onclick="toggleMobileMenu();" class="w-full flex h-12 items-center justify-center gap-2 rounded-full bg-[#128C7E] text-white text-[14px] font-semibold shadow-md mt-4">
+      <button onclick="switchTab('concierge')" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
+        <i data-lucide="sparkles" class="w-4 h-4 text-[#C6A15A]"></i>
+        <span class="flex-1 text-left">AI Concierge</span>
+      </button>
+      <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" class="w-full flex h-12 items-center justify-center gap-2 rounded-full bg-[#128C7E] text-white text-[14px] font-semibold shadow-md mt-4">
         <span>💬 Book instantly via WhatsApp</span>
       </a>
     </div>
   </header>
+
   <main class="flex-grow">
     
     <!-- TOAST NOTIFICATION BANNER -->
@@ -444,10 +452,9 @@
         </div>
 
         <!-- Planner category picker -->
-        <!-- Planner category picker -->
         <div class="flex items-center justify-center gap-2 max-w-md mx-auto bg-white p-1 rounded-full border border-black/5 shadow-sm mb-12">
-          <button onclick="setEventPlanner('graduation')" id="plan-btn-graduation" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm">
-            🎓 Graduation Party
+          <button onclick="setEventPlanner('wedding')" id="plan-btn-wedding" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm">
+            💍 Wedding Party
           </button>
           <button onclick="setEventPlanner('birthday')" id="plan-btn-birthday" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5">
             🎈 Birthday Bash
@@ -545,7 +552,64 @@
     </div>
 
     <!-- ==================== TAB 3: CONCIERGE CHAT ==================== -->
-    
+    <div id="tab-concierge" class="tab-content hidden">
+      <div class="max-w-4xl mx-auto px-4 py-12">
+        
+        <div class="text-center space-y-2 mb-8">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C6A15A]/10 border border-[#C6A15A]/35 text-[11px] font-bold text-[#C6A15A] uppercase tracking-wider">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>AI Powered Resort Butler</span>
+          </div>
+          <h2 class="font-serif text-[32px] sm:text-[38px] font-extrabold text-[#0A1E3C]">Meet Grand Host</h2>
+          <p class="text-[13px] text-black/55 max-w-lg mx-auto">Ask our smart virtual host anything about room availability, event spaces, spa amenities, or tourist destinations in Mbarara.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-black/5 shadow-xl overflow-hidden flex flex-col h-[560px] relative">
+          
+          <div class="bg-[#0A1E3C] text-white p-4 flex items-center justify-between border-b border-white/5">
+            <div class="flex items-center gap-3">
+              <div class="relative w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center font-serif font-extrabold text-[#D4AF37]">
+                GH
+                <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#128C7E] rounded-full border-2 border-[#0A1E3C]"></span>
+              </div>
+              <div>
+                <div class="text-[13px] font-bold tracking-wide flex items-center gap-1.5">
+                  <span>Grand Host Concierge</span>
+                  <span class="text-[10px] bg-[#D4AF37] text-[#0A1E3C] font-extrabold px-1.5 py-0.5 rounded uppercase">AI</span>
+                </div>
+                <div class="text-[10.5px] text-white/50">Online • Warm Ankole Hospitality</div>
+              </div>
+            </div>
+            <button onclick="clearChatHistory()" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/5">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Message Stream -->
+          <div id="chat-messages-container" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-[#FFFBF2]/30">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Suggestion pills bar -->
+          <div class="px-4 py-2 bg-[#FFFBF2]/50 border-t border-black/5 flex items-center gap-2 overflow-x-auto no-scrollbar">
+            <span class="text-[10px] uppercase tracking-wider font-extrabold text-black/35 shrink-0">Suggestions:</span>
+            <button onclick="sendSuggestionChat('List luxury rooms, rates, and breakfast inclusions')" class="h-7 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-[#0A1E3C]/80 shrink-0">🏨 Rooms & Rates</button>
+            <button onclick="sendSuggestionChat('Plan a 2-day Mbarara safari tour itinerary including Lake Mburo National Park')" class="h-7 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-[#0A1E3C]/80 shrink-0">🦓 Safari Itinerary</button>
+            <button onclick="sendSuggestionChat('What spa, therapeutic massage, and swimming pool amenities do you have?')" class="h-7 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-[#0A1E3C]/80 shrink-0">💆‍♀️ Massage & Spa</button>
+          </div>
+
+          <!-- Chat input form -->
+          <form id="chat-input-form" onsubmit="handleChatSubmit(event)" class="p-3 bg-white border-t border-black/5 flex items-center gap-2">
+            <input type="text" id="chat-user-input" placeholder="Ask about rooms, wedding planning, Mbarara tourist spots..." class="flex-1 h-11 px-4 text-[13px] bg-[#FFFBF2]/50 border border-black/10 rounded-xl outline-none focus:border-[#C6A15A]" />
+            <button type="submit" class="w-11 h-11 rounded-xl bg-[#0A1E3C] text-white flex items-center justify-center hover:bg-[#C6A15A]">
+              <i data-lucide="send" class="w-4 h-4 text-[#D4AF37]"></i>
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
 
   </main>
 
@@ -711,19 +775,18 @@
     ];
 
     // State Variables
-    // State Variables
     let currentCategory = "Popular";
-    let activePlanner = "graduation";
+    let activePlanner = "wedding";
     let selectedRoom = null;
     let guestCount = { adults: 2, children: 1 };
     
-    // Services pricing lists updated for Graduation, Birthday, Seminar
+    // Services pricing lists
     const SERVICES_DATA = {
-      graduation: [
-        { id: "venue", name: "Grand Open Gardens Venue Hire", price: 1200000, icon: "🌳" },
-        { id: "decor", name: "Graduation Theme Decor & Photo Booth", price: 1000000, icon: "✨" },
-        { id: "catering", name: "Celebration Buffet (Per Guest)", price: 35000, icon: "🍛", perGuest: true },
-        { id: "sound", name: "Premium sound system & Cordless Mics", price: 500000, icon: "🔊" }
+      wedding: [
+        { id: "venue", name: "Grand Garden Venue Hire", price: 1500000, icon: "🌳" },
+        { id: "decor", name: "Premium Floral Decor & Lighting", price: 1200000, icon: "✨" },
+        { id: "catering", name: "Organic Buffet (Per Guest)", price: 40000, icon: "🍛", perGuest: true },
+        { id: "sound", name: "PA System & Dedicated DJ", price: 600000, icon: "🔊" }
       ],
       birthday: [
         { id: "venue", name: "Poolside Venue Venue Hire", price: 400000, icon: "🏊‍♂️" },
@@ -739,16 +802,17 @@
     };
 
     let selectedServices = {
-      graduation: ["venue", "decor", "catering"],
+      wedding: ["venue", "decor", "catering"],
       birthday: ["venue", "catering", "cake"],
       retreat: ["hall", "meals"]
     };
 
-    let plannerGuests = 100;
-    let plannerBudget = 6000000;
+    let plannerGuests = 150;
+    let plannerBudget = 12000000;
 
     // Initialize Page
     document.addEventListener("DOMContentLoaded", () => {
+      // Set Date inputs to today/tomorrow as defaults
       const today = new Date().toISOString().split('T')[0];
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
@@ -759,11 +823,12 @@
       document.getElementById("event-date").value = today;
 
       renderRooms();
-      setEventPlanner("graduation"); // Default planner view setup
+      setEventPlanner("wedding");
+      renderChatLogs();
       lucide.createIcons();
     });
 
-    // Toast Tracker
+    // Toast Trigger
     function triggerToast(message) {
       const banner = document.getElementById("toast-banner");
       document.getElementById("toast-message").innerText = message;
@@ -771,15 +836,15 @@
       setTimeout(() => banner.classList.add("hidden"), 3000);
     }
 
-    // Tab Switching (AI Concierge fully stripped)
+    // Tab Switching
     function switchTab(tabId) {
       document.querySelectorAll(".tab-content").forEach(el => el.classList.add("hidden"));
       document.getElementById(`tab-${tabId}`).classList.remove("hidden");
 
-      const navs = ["home", "planner"];
+      // Active states for nav buttons
+      const navs = ["home", "planner", "concierge"];
       navs.forEach(n => {
         const btn = document.getElementById(`nav-${n}`);
-        if (!btn) return;
         if (n === tabId) {
           btn.className = "flex items-center gap-2 h-9 px-4 rounded-full text-[13px] font-semibold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm";
           btn.querySelector('i').style.color = "#D4AF37";
@@ -789,7 +854,8 @@
         }
       });
 
-      triggerToast(`Switched to ${tabId === "home" ? "Rooms" : "Planner"}`);
+      document.getElementById("mobile-menu").classList.add("hidden");
+      triggerToast(`Switched to ${tabId === "home" ? "Rooms" : tabId === "planner" ? "Planner" : "Concierge"}`);
     }
 
     function toggleMobileMenu() {
@@ -828,7 +894,6 @@
     // Render Rooms Grid
     function renderRooms() {
       const container = document.getElementById("rooms-list");
-      if(!container) return;
       container.innerHTML = "";
 
       const list = currentCategory === "Popular" ? ROOMS_DATA : ROOMS_DATA.filter(r => r.tag === currentCategory);
@@ -919,10 +984,10 @@
     function setEventPlanner(type) {
       activePlanner = type;
       
-      const ptypes = ["graduation", "birthday", "retreat"];
+      // Update buttons style
+      const ptypes = ["wedding", "birthday", "retreat"];
       ptypes.forEach(p => {
         const btn = document.getElementById(`plan-btn-${p}`);
-        if(!btn) return;
         if (p === type) {
           btn.className = "flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm";
         } else {
@@ -930,13 +995,13 @@
         }
       });
 
-      // Update Slider limits for newly defined scopes
+      // Update Slider limits
       const slider = document.getElementById("planner-guests-slider");
-      if (type === "graduation") {
-        document.getElementById("planner-title").innerText = "Plan Your Graduation Ceremony Party";
+      if (type === "wedding") {
+        document.getElementById("planner-title").innerText = "Plan Your Dream Garden Wedding";
         slider.max = "300";
-        plannerGuests = 100;
-        plannerBudget = 6000000;
+        plannerGuests = 150;
+        plannerBudget = 12000000;
       } else if (type === "birthday") {
         document.getElementById("planner-title").innerText = "Plan Your Custom Poolside Birthday Party";
         slider.max = "150";
@@ -959,7 +1024,6 @@
 
     function renderPlannerServices() {
       const container = document.getElementById("planner-services-container");
-      if(!container) return;
       container.innerHTML = "";
 
       const services = SERVICES_DATA[activePlanner];
@@ -1020,7 +1084,6 @@
       let total = 0;
 
       const listContainer = document.getElementById("planner-breakdown-list");
-      if(!listContainer) return;
       listContainer.innerHTML = "";
 
       services.forEach(svc => {
@@ -1041,20 +1104,21 @@
       document.getElementById("estimated-total").innerText = `UGX ${total.toLocaleString()}`;
       document.getElementById("estimated-total-details").innerText = `Based on ${plannerGuests} Guests`;
 
+      // Render Alert banner
       const alertContainer = document.getElementById("budget-alert-banner");
       const isSufficient = plannerBudget >= total;
 
       if (isSufficient) {
         alertContainer.className = "p-4 rounded-2xl border flex items-start gap-3 text-[12.5px] bg-[#128C7E]/10 border-[#128C7E]/30 text-white";
         alertContainer.innerHTML = `
-          <div class="font-bold">✓ Budget Sufficient</div>
-          <div class="text-[11.5px] opacity-75">Your target budget covers this estimate safely.</div>
+          <div class="font-bold">✓ Budget is Sufficient!</div>
+          <div class="text-[11.5px] opacity-75">Your target budget of UGX ${plannerBudget.toLocaleString()} easily covers this quotation estimate. You are good to request!</div>
         `;
       } else {
         alertContainer.className = "p-4 rounded-2xl border flex items-start gap-3 text-[12.5px] bg-red-500/10 border-red-500/30 text-red-100";
         alertContainer.innerHTML = `
           <div class="font-bold">⚠ Over Budget Plan</div>
-          <div class="text-[11.5px] opacity-75">Short of the estimation by UGX ${(total - plannerBudget).toLocaleString()}.</div>
+          <div class="text-[11.5px] opacity-75">Your budget is short of the estimation by UGX ${(total - plannerBudget).toLocaleString()}. Consider adjusting guests or services.</div>
         `;
       }
     }
@@ -1064,10 +1128,11 @@
         .filter(s => selectedServices[activePlanner].includes(s.id))
         .map(s => s.name);
       
-      const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to request an official event quotation:\n\n⭐ Event Type: ${activePlanner.toUpperCase()}\n📅 Target Date: ${document.getElementById('event-date').value}\n👥 Expected Guests: ${plannerGuests} Guests\n💰 Target Budget: UGX ${plannerBudget.toLocaleString()}\n💸 Est. Quotation: ${document.getElementById('estimated-total').innerText}\n\n🛠️ Services Chosen:\n${servicesList.map(s => ` - ${s}`).join('\n')}\n\nPlease share official packages.`;
+      const text = `Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to request an official event quotation:\n\n⭐ Event Type: ${activePlanner.toUpperCase()}\n📅 Target Date: ${document.getElementById('event-date').value}\n👥 Expected Guests: ${plannerGuests} Guests\n💰 Target Budget: UGX ${plannerBudget.toLocaleString()}\n💸 Est. Quotation: ${document.getElementById('estimated-total').innerText}\n\n🛠️ Services Chosen:\n${servicesList.map(s => ` - ${s}`).join('\n')}\n\nPlease share official catalog packages.`;
       
       window.open(`https://wa.me/256776506052?text=${encodeURIComponent(text)}`, "_blank");
     }
+
     // ==================== CONCIERGE CHAT SIMULATOR ====================
     let chatHistory = [
       { role: "model", text: "Good evening and welcome to Mbarara Grand Holiday Hotel! ♔ I am Grand Host, your virtual concierge.\n\nI am here to guide you in choosing the perfect luxury suite, estimating wedding or conference budgets, or planning tours around Mbarara (including Lake Mburo safaris!). How can I help you today?" }
