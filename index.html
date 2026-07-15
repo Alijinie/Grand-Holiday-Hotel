@@ -151,19 +151,22 @@
     </div>
 
     <!-- Mobile menu drawer (Closes layout automatically onclick) -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-white px-4 py-4 space-y-2">
-      <button onclick="switchTab('home'); toggleMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-white bg-[#0A1E3C]">
-        <i data-lucide="hotel" class="w-4 h-4 text-[#D4AF37]"></i>
-        <span class="flex-1 text-left">Rooms & Booking</span>
-      </button>
-      <button onclick="switchTab('planner'); toggleMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
-        <i data-lucide="calendar-days" class="w-4 h-4 text-[#C6A15A]"></i>
-        <span class="flex-1 text-left">Event Planner</span>
-      </button>
-      <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" onclick="toggleMobileMenu();" class="w-full flex h-12 items-center justify-center gap-2 rounded-full bg-[#128C7E] text-white text-[14px] font-semibold shadow-md mt-4">
-        <span>💬 Book instantly via WhatsApp</span>
-      </a>
-    </div>
+    <!-- Mobile menu drawer (Closes layout automatically onclick) -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-white px-4 py-4 space-y-2">
+  <button onclick="switchTab('home'); closeMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-white bg-[#0A1E3C]">
+    <i data-lucide="hotel" class="w-4 h-4 text-[#D4AF37]"></i>
+    <span class="flex-1 text-left">Rooms & Booking</span>
+  </button>
+  
+  <button onclick="switchTab('planner'); closeMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
+    <i data-lucide="calendar-days" class="w-4 h-4 text-[#C6A15A]"></i>
+    <span class="flex-1 text-left">Event Planner</span>
+  </button>
+  
+  <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" onclick="closeMobileMenu();" class="w-full flex h-12 items-center justify-center gap-2 rounded-full bg-[#128C7E] text-white text-[14px] font-semibold shadow-md mt-4">
+    <span>💬 Book instantly via WhatsApp</span>
+  </a>
+</div>
   </header>
   <main class="flex-grow">
     
@@ -796,6 +799,12 @@
       const m = document.getElementById("mobile-menu");
       m.classList.toggle("hidden");
     }
+
+    // Forces the menu to hide, avoiding toggle synchronization bugs
+function closeMobileMenu() {
+  const menu = document.getElementById("mobile-menu");
+  menu.classList.add("hidden");
+}
 
     // Toggle guest picker dropdown
     function toggleGuestPicker() {
