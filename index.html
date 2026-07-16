@@ -1146,13 +1146,13 @@ function closeMobileMenu() {
   <div class="glass bg-[#0A1E3C]/95 border border-white/10 rounded-2xl shadow-[0_8px_32px_rgba(7,21,43,0.35)] px-4 py-2 flex items-center justify-around">
     
     <!-- Tab 1: Rooms & Booking -->
-    <button onclick="switchTab('home')" class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-all py-1">
+    <button onclick="switchTab('home') ; window.scrollTo({top: 0, behavior: 'smooth'});" class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-all py-1">
       <i data-lucide="hotel" class="w-5 h-5 text-[#D4AF37]"></i>
       <span class="text-[10px] font-medium tracking-wide">Rooms</span>
     </button>
     
     <!-- Tab 2: Event Planner -->
-    <button onclick="switchTab('planner')" class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-all py-1">
+    <button onclick="switchTab('planner') ; window.scrollTo({top: 0, behavior: 'smooth'});" class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-all py-1">
       <i data-lucide="calendar-days" class="w-5 h-5 text-[#C6A15A]"></i>
       <span class="text-[10px] font-medium tracking-wide">Planner</span>
     </button>
