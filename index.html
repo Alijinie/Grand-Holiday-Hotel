@@ -144,31 +144,15 @@
           <span class="font-serif text-[15px] text-[#D4AF37]">💬</span>
           <span>Book on WhatsApp</span>
         </a>
-        <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-[#0A1E3C]">
-          <i id="menu-icon" data-lucide="menu" class="w-5 h-5"></i>
-        </button>
+        
       </div>
     </div>
 
     <!-- Mobile menu drawer (Closes layout automatically onclick) -->
     <!-- Mobile menu drawer (Closes layout automatically onclick) -->
-<div id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-white px-4 py-4 space-y-2">
-  <button onclick="switchTab('home'); closeMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-white bg-[#0A1E3C]">
-    <i data-lucide="hotel" class="w-4 h-4 text-[#D4AF37]"></i>
-    <span class="flex-1 text-left">Rooms & Booking</span>
-  </button>
-  
-  <button onclick="switchTab('planner'); closeMobileMenu();" class="w-full flex items-center gap-3 h-12 px-4 rounded-xl text-[14px] font-semibold text-[#0A1E3C]/80 hover:bg-black/5">
-    <i data-lucide="calendar-days" class="w-4 h-4 text-[#C6A15A]"></i>
-    <span class="flex-1 text-left">Event Planner</span>
-  </button>
-  
-  <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." target="_blank" onclick="closeMobileMenu();" class="w-full flex h-12 items-center justify-center gap-2 rounded-full bg-[#128C7E] text-white text-[14px] font-semibold shadow-md mt-4">
-    <span>💬 Book instantly via WhatsApp</span>
-  </a>
-</div>
+
   </header>
-  <main class="flex-grow">
+  <main class="flex-grow pb-24 md:pb-0">
     
     <!-- TOAST NOTIFICATION BANNER -->
     <div id="toast-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0A1E3C] text-white px-5 py-3 rounded-full text-xs font-semibold shadow-2xl flex items-center gap-2 border border-[#C6A15A]/40 hidden">
@@ -1157,6 +1141,34 @@ function closeMobileMenu() {
       }
     }
   </script>
+<!-- APP-LIKE BOTTOM NAVIGATION BAR (Mobile Only) -->
+<div class="md:hidden fixed bottom-4 left-4 right-4 z-50">
+  <div class="glass bg-[#0A1E3C]/95 border border-white/10 rounded-2xl shadow-[0_8px_32px_rgba(7,21,43,0.35)] px-4 py-2 flex items-center justify-around">
+    
+    <!-- Tab 1: Rooms & Booking -->
+    <button onclick="switchTab('home')" class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-all py-1">
+      <i data-lucide="hotel" class="w-5 h-5 text-[#D4AF37]"></i>
+      <span class="text-[10px] font-medium tracking-wide">Rooms</span>
+    </button>
+    
+    <!-- Tab 2: Event Planner -->
+    <button onclick="switchTab('planner')" class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-all py-1">
+      <i data-lucide="calendar-days" class="w-5 h-5 text-[#C6A15A]"></i>
+      <span class="text-[10px] font-medium tracking-wide">Planner</span>
+    </button>
 
+    <!-- Divider -->
+    <div class="h-6 w-[1px] bg-white/10"></div>
+    
+    <!-- Quick Call/WhatsApp Action -->
+    <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B%20I%20would%20like%20to%20inquire%20about%20stay%20availability." 
+       target="_blank" 
+       class="flex flex-col items-center gap-1 text-[#128C7E] hover:text-[#25D366] transition-all py-1">
+      <span class="text-base leading-none">💬</span>
+      <span class="text-[10px] font-bold tracking-wide text-white/90">Book Chat</span>
+    </a>
+    
+  </div>
+</div>
 </body>
 </html>
