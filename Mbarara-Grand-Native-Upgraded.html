@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A1E3C">
+  <title>Mbarara Grand Hospitality Services | The Perfect Getaway</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alijinie.github.io/Grand-Holiday-Hotel/" />
+  <meta property="og:site_name" content="Mbarara Grand Holiday Hotel" />
+  <meta property="og:title" content="MBARARA GRAND HOSPITALITY SERVICES | The Perfect Getaway" />
+  <meta property="og:description" content="Experience luxury, comfort and authentic hospitality. Premium rooms, fine dining, spa and unforgettable events in the heart of Western Uganda." />
+  <meta property="og:image" content="https://alijinie.github.io/Grand-Holiday-Hotel/15.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['Inter', 'sans-serif'] },
+          animation: { 'shimmer': 'shimmer 2s linear infinite', 'float': 'float 6s ease-in-out infinite' },
+          keyframes: { shimmer: { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(100%)' } }, float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } } }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #FFFBF2; color: #0A1E3C; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+    .serif { font-family: 'Playfair Display', serif; }
+    .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .glass-dark { background: rgba(7,21,43,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .sheet { transition: transform 0.45s cubic-bezier(0.32,0.72,0,1); }
+    .sheet-enter { transform: translateY(100%); } .sheet-active { transform: translateY(0); }
+    .banner-snap { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .banner-card { scroll-snap-align: start; }
+    .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+    .img-zoom { transition: transform 0.7s cubic-bezier(0.2,0,0,1); }
+    .group:hover .img-zoom { transform: scale(1.08); }
+    .native-shadow { box-shadow: 0 12px 40px rgba(10,30,60,0.12), 0 2px 8px rgba(10,30,60,0.06); }
+    .native-shadow-lg { box-shadow: 0 24px 64px rgba(7,21,43,0.22), 0 8px 24px rgba(7,21,43,0.12); }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#C6A15A]/30 flex flex-col min-h-screen">
+
+  <!-- TOP BANNER -->
+  <div class="bg-[#07152B] text-white/80 text-[11px] py-2.5 border-b border-white/10 z-50 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-2">
+      <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 sm:gap-6">
+        <span class="flex items-center gap-1.5 font-medium"><i data-lucide="phone" class="w-3.5 h-3.5 text-[#C6A15A]"></i><span>0761 422 899 / 0776 506 052</span></span>
+        <span class="hidden sm:flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#C6A15A]"></i><span>Near Tatitwe, Mbarara City</span></span>
+        <span class="hidden md:flex items-center gap-1.5 text-white/30">|</span>
+        <span class="hidden md:flex items-center gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#C6A15A]"></i><span>24/7 Secure</span></span>
+      </div>
+      <div class="hidden lg:flex items-center gap-2 text-[10px]">
+        <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-white/60">Free Wi-Fi</span>
+        <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-white/60">Free Breakfast</span>
+        <span class="px-2 py-1 rounded-full bg-[#C6A15A]/20 border border-[#C6A15A]/30 text-[#D4AF37]">Best Price Direct</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 glass border-b border-black/[0.06] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+        <div class="relative w-11 h-11 shrink-0 rounded-[12px] bg-white shadow-md border border-[#C6A15A]/20 overflow-hidden p-1">
+          <img src="logo.jpg" alt="Mbarara Grand Logo" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=100'">
+        </div>
+        <div class="leading-tight">
+          <div class="font-serif font-black text-[11px] tracking-[0.14em] text-[#0A1E3C]">MBARARA GRAND</div>
+          <div class="font-serif font-black text-[11px] tracking-[0.14em] text-[#0A1E3C] -mt-0.5">HOSPITALITY SERVICES</div>
+          <div class="text-[9px] tracking-[0.24em] text-[#C6A15A] font-bold uppercase">The Perfect Getaway</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-1 bg-[#FFFBF2] p-1.5 rounded-full border border-black/5">
+        <button id="nav-home" onclick="switchTab('home')" class="flex items-center gap-2 h-9 px-5 rounded-full text-[13px] font-semibold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm">
+          <i data-lucide="hotel" class="w-3.5 h-3.5 text-[#D4AF37]"></i> Rooms
+        </button>
+        <button id="nav-planner" onclick="switchTab('planner')" class="flex items-center gap-2 h-9 px-5 rounded-full text-[13px] font-semibold tracking-wide transition-all text-[#0A1E3C]/70 hover:text-[#0A1E3C] hover:bg-black/5">
+          <i data-lucide="calendar-days" class="w-3.5 h-3.5 text-[#C6A15A]"></i> Events
+        </button>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/256761422899" target="_blank" class="hidden sm:inline-flex items-center gap-2 h-10 px-5 rounded-full bg-[#0A1E3C] text-white text-[13px] font-semibold hover:bg-black shadow-sm transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4 text-[#D4AF37]"></i><span>Concierge</span>
+        </a>
+        <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B" target="_blank" class="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-[#128C7E] text-white text-[13px] font-bold hover:bg-[#075E54] shadow-sm transition-all">
+          <span class="hidden sm:inline">Book Now</span><span class="sm:hidden">Book</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pb-28 md:pb-0">
+    <div id="toast-banner" class="fixed bottom-[96px] md:bottom-6 left-1/2 -translate-x-1/2 z-[70] bg-[#0A1E3C] text-white px-5 py-3 rounded-full text-xs font-semibold shadow-2xl flex items-center gap-2 border border-[#C6A15A]/30 hidden">
+      <i data-lucide="sparkles" class="w-4 h-4 text-[#D4AF37]"></i><span id="toast-message">Done</span>
+    </div>
+
+    <!-- HOME TAB -->
+    <div id="tab-home" class="tab-content">
+      <!-- HERO -->
+      <section class="relative overflow-hidden bg-[#07152B] text-white">
+        <div class="absolute inset-0">
+          <img src="7777.png" class="w-full h-full object-cover opacity-70" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600'"/>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#07152B] via-[#07152B]/85 to-[#07152B]/40"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#07152B] via-transparent to-transparent"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[11px] font-bold tracking-widest uppercase">
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span><span>Live Availability • Mbarara</span><span class="ml-1 text-[#D4AF37]">4.9 ★ (320+)</span>
+            </div>
+            <h1 class="font-serif text-[38px] sm:text-[52px] lg:text-[58px] font-black leading-[0.95] tracking-tight">The Perfect<br/>Getaway in<br/><span class="text-[#D4AF37] relative inline-block">Mbarara City<span class="absolute left-0 bottom-1 w-full h-[3px] bg-gradient-to-r from-[#D4AF37] to-transparent"></span></span></h1>
+            <p class="text-[14px] sm:text-[15.5px] text-white/75 leading-relaxed max-w-lg">Indulge in budget, mid-range and premium suites, therapeutic massage lounges, exquisite menus, and seminar workspaces.</p>
+            <div class="flex flex-wrap gap-3">
+              <button onclick="document.getElementById('experience-slider-section').scrollIntoView({behavior:'smooth'})" class="h-11 px-6 rounded-full bg-white text-[#0A1E3C] font-bold text-[13px] flex items-center gap-2 hover:bg-[#FFFBF2]">Explore Hotel <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+              <button onclick="document.getElementById('rooms-grid-section').scrollIntoView({behavior:'smooth'})" class="h-11 px-6 rounded-full bg-white/10 border border-white/20 text-white font-semibold text-[13px] backdrop-blur-md">View Rooms</button>
+            </div>
+            <div class="pt-2 flex items-center gap-6 text-[12px] text-white/60">
+              <span class="flex items-center gap-1.5"><i data-lucide="badge-check" class="w-4 h-4 text-[#D4AF37]"></i>Pay at Hotel</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="badge-check" class="w-4 h-4 text-[#D4AF37]"></i>Free Cancellation</span>
+            </div>
+          </div>
+          <div class="lg:col-span-5 relative">
+            <div class="bg-white rounded-[28px] shadow-[0_24px_64px_rgba(7,21,43,0.35)] border border-white/60 text-[#0a1e3c] relative overflow-visible">
+              <div class="p-6 sm:p-7 space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-black/5">
+                  <div><span class="text-[10px] uppercase tracking-widest font-bold text-[#C6A15A]">Native Instant Booking</span><h3 class="font-serif text-[20px] font-bold mt-0.5">Check Availability</h3></div>
+                  <span class="w-9 h-9 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] flex items-center justify-center"><i data-lucide="zap" class="w-4 h-4 text-[#C6A15A]"></i></span>
+                </div>
+                <div><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Location</label><div class="h-11 rounded-xl border border-black/10 bg-[#FFFBF2]/50 flex items-center px-3.5 gap-2.5"><i data-lucide="map-pin" class="w-4 h-4 text-[#C6A15A]"></i><span class="text-[13px] font-semibold text-black/85">Mbarara Grand Holiday Hotel</span></div></div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Check In</label><div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3"><i data-lucide="calendar" class="w-3.5 h-3.5 text-[#C6A15A] mr-2 shrink-0"></i><input type="date" id="check-in-date" class="bg-transparent text-[12.5px] font-medium outline-none w-full text-black/85" /></div></div>
+                  <div><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Check Out</label><div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3"><i data-lucide="calendar" class="w-3.5 h-3.5 text-[#C6A15A] mr-2 shrink-0"></i><input type="date" id="check-out-date" class="bg-transparent text-[12.5px] font-medium outline-none w-full text-black/85" /></div></div>
+                </div>
+                <div class="relative">
+                  <label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Guests & Rooms</label>
+                  <button type="button" onclick="toggleGuestPicker()" class="w-full h-11 rounded-xl border border-black/10 bg-white px-3.5 flex items-center justify-between text-[13px] font-semibold text-black/85 shadow-sm hover:border-black/25">
+                    <span class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-[#C6A15A]"></i><span id="guest-occupancy-summary">2 Guests • 1 Room</span></span><i data-lucide="chevron-down" class="w-4 h-4 text-black/30"></i>
+                  </button>
+                  <div id="guest-picker-dropdown" class="hidden absolute z-20 left-0 right-0 mt-2 bg-white rounded-2xl border border-black/5 shadow-2xl p-4 space-y-3.5">
+                    <div class="flex items-center justify-between"><div><div class="text-[13px] font-bold">Adults</div><div class="text-[10px] text-black/45">Age 13+</div></div><div class="flex items-center gap-3"><button type="button" onclick="changeGuest('adults', -1)" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-sm font-bold hover:bg-black/5">-</button><span id="count-adults" class="text-sm font-bold w-5 text-center">2</span><button type="button" onclick="changeGuest('adults', 1)" class="w-8 h-8 rounded-full bg-[#0A1E3C] text-white flex items-center justify-center text-sm font-bold">+</button></div></div>
+                    <div class="flex items-center justify-between"><div><div class="text-[13px] font-bold">Children</div><div class="text-[10px] text-black/45">Ages 2-12</div></div><div class="flex items-center gap-3"><button type="button" onclick="changeGuest('children', -1)" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-sm font-bold hover:bg-black/5">-</button><span id="count-children" class="text-sm font-bold w-5 text-center">1</span><button type="button" onclick="changeGuest('children', 1)" class="w-8 h-8 rounded-full bg-[#0A1E3C] text-white flex items-center justify-center text-sm font-bold">+</button></div></div>
+                    <div class="flex items-center justify-between pt-2 border-t border-black/5"><div class="text-[12px] font-semibold">Rooms</div><div class="flex items-center gap-3"><button type="button" onclick="changeRoomCount(-1)" class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center">-</button><span id="count-rooms" class="text-sm font-bold w-5 text-center">1</span><button type="button" onclick="changeRoomCount(1)" class="w-8 h-8 rounded-full bg-[#0A1E3C] text-white flex items-center justify-center">+</button></div></div>
+                    <button type="button" onclick="toggleGuestPicker()" class="w-full h-10 mt-2 rounded-xl bg-[#0A1E3C] text-white text-[12px] font-bold">Done</button>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 pt-1">
+                  <div class="rounded-xl bg-[#FFFBF2] border border-[#E9DFC7] p-2.5 text-center"><div class="text-[10px] uppercase font-bold text-black/40">Nights</div><div id="nights-count" class="text-[14px] font-black">1</div></div>
+                  <div class="rounded-xl bg-[#FFFBF2] border border-[#E9DFC7] p-2.5 text-center"><div class="text-[10px] uppercase font-bold text-black/40">From</div><div class="text-[14px] font-black text-[#C6A15A]">UGX 120k</div></div>
+                  <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-2.5 text-center"><div class="text-[10px] uppercase font-bold text-emerald-700">Save</div><div class="text-[14px] font-black text-emerald-700">15%</div></div>
+                </div>
+                <button onclick="checkRoomAvailability()" class="w-full h-[48px] rounded-xl bg-[#0A1E3C] text-white font-bold flex items-center justify-center gap-2 hover:bg-[#07152B] shadow-md transition-all group"><span>Check on WhatsApp</span><i data-lucide="arrow-right" class="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-all"></i></button>
+                <div class="flex items-center justify-center gap-3 text-[11px] text-black/45"><span>✦ Instant Reply</span><span>•</span><span>Best Rate Guarantee</span></div>
+              </div>
+              <div class="h-1.5 bg-gradient-to-r from-[#D4AF37] via-[#C6A15A] to-[#E9D39A] rounded-b-[28px]"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE SLIDING BANNERS -->
+      <section id="experience-slider-section" class="pt-12 sm:pt-16 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-end justify-between gap-4 mb-6">
+          <div><div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#C6A15A]">Explore The Grand</div><h2 class="font-serif text-[26px] sm:text-[32px] font-extrabold leading-tight mt-1">Every Corner, Crafted for You</h2></div>
+          <div class="hidden md:flex items-center gap-2"><button onclick="scrollBanners(-1)" class="w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center hover:bg-black/5"><i data-lucide="chevron-left" class="w-4 h-4"></i></button><button onclick="scrollBanners(1)" class="w-10 h-10 rounded-full bg-[#0A1E3C] text-white flex items-center justify-center hover:bg-black"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
+        </div>
+        <div id="experience-slider" class="banner-snap flex gap-4 overflow-x-auto no-scrollbar pb-4">
+          <!-- Injected via JS -->
+        </div>
+        <div class="flex items-center justify-center gap-1.5 mt-2" id="banner-dots"></div>
+      </section>
+
+      <!-- ROOMS DIRECTORY -->
+      <section id="rooms-grid-section" class="pt-14 sm:pt-20 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-5 pb-6 border-b border-black/5">
+          <div class="space-y-2"><div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#C6A15A]">Luxury Accommodation Collection</div><h2 class="font-serif text-[30px] sm:text-[36px] font-extrabold text-[#0A1E3C] leading-none">Find Your Premium Stay</h2><p class="text-[13px] text-black/55 max-w-md">Swipe to explore • Tap for gallery, amenities & native booking sheet.</p></div>
+          <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+            <button onclick="filterRooms('Popular')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white border border-[#0A1E3C]">All Rooms</button>
+            <button onclick="filterRooms('Standard')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Budget</button>
+            <button onclick="filterRooms('Deluxe')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Deluxe</button>
+            <button onclick="filterRooms('Executive')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Executive</button>
+            <button onclick="filterRooms('Family')" class="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30">Family</button>
+          </div>
+        </div>
+        <div id="rooms-list" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </section>
+
+      <!-- RESORT SPOTLIGHT WITH CLICKABLE SERVICE CARDS -->
+      <section class="pt-16 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="rounded-[32px] bg-[#0A1E3C] text-white p-6 sm:p-8 lg:p-10 relative overflow-hidden native-shadow-lg">
+          <div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-[#D4AF37]/15 blur-[70px] pointer-events-none"></div>
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 space-y-4"><div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#D4AF37]">The Grand Experience • Tap to Explore</div><h2 class="font-serif text-[28px] sm:text-[34px] font-bold leading-tight">Premium services tailored for ultimate relaxation</h2><p class="text-[13.5px] text-white/65 leading-relaxed">Enjoy secure accommodation and amenities. Massage and sauna, organic Ugandan specialties, and serene spaces.</p><div class="flex flex-wrap gap-2 text-[11px]"><span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">✔ Breakfast Included</span><span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">✔ 24/7 Security</span><span class="px-3 py-1.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37]">Native App Booking</span></div></div>
+            <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <button onclick="openServiceModal('spa')" class="text-left bg-white/[0.06] border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm hover:bg-white/[0.09] transition-all group"><span class="text-2xl group-hover:scale-110 transition-transform inline-block">💆‍♀️</span><div class="font-bold text-[14px]">Spa & Massages</div><div class="text-[11.5px] text-white/50 leading-normal">Swedish, deep-tissue & sauna. Tap to view treatments.</div><div class="pt-2 text-[11px] text-[#D4AF37] font-bold flex items-center gap-1">View Menu <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div></button>
+              <button onclick="openServiceModal('restaurant')" class="text-left bg-white/[0.06] border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm hover:bg-white/[0.09] transition-all group"><span class="text-2xl group-hover:scale-110 transition-transform inline-block">🍽️</span><div class="font-bold text-[14px]">Fine Dining</div><div class="text-[11.5px] text-white/50 leading-normal">Local & continental delicacies. See menu & gallery.</div><div class="pt-2 text-[11px] text-[#D4AF37] font-bold flex items-center gap-1">View Menu <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div></button>
+              <button onclick="openServiceModal('bar')" class="text-left bg-white/[0.06] border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm hover:bg-white/[0.09] transition-all group"><span class="text-2xl group-hover:scale-110 transition-transform inline-block">🍸</span><div class="font-bold text-[14px]">Lounge Bar</div><div class="text-[11.5px] text-white/50 leading-normal">Craft cocktails, terrace views & sunset vibes.</div><div class="pt-2 text-[11px] text-[#D4AF37] font-bold flex items-center gap-1">Explore <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div></button>
+              <button onclick="openServiceModal('conference')" class="text-left bg-white/[0.06] border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm hover:bg-white/[0.09] transition-all group"><span class="text-2xl group-hover:scale-110 transition-transform inline-block">📇</span><div class="font-bold text-[14px]">Conference</div><div class="text-[11.5px] text-white/50 leading-normal">High-speed fiber, seminar halls. Check spaces.</div><div class="pt-2 text-[11px] text-[#D4AF37] font-bold flex items-center gap-1">See Halls <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div></button>
+              <button onclick="openServiceModal('pool')" class="text-left bg-white/[0.06] border border-white/10 rounded-2xl p-4 space-y-2 backdrop-blur-sm hover:bg-white/[0.09] transition-all group"><span class="text-2xl group-hover:scale-110 transition-transform inline-block">🏊</span><div class="font-bold text-[14px]">Pool Club</div><div class="text-[11.5px] text-white/50 leading-normal">Sparkling pool, recliners & kids splash.</div><div class="pt-2 text-[11px] text-[#D4AF37] font-bold flex items-center gap-1">View <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div></button>
+              <button onclick="openServiceModal('gardens')" class="text-left bg-gradient-to-br from-[#D4AF37]/20 to-[#C6A15A]/10 border border-[#D4AF37]/30 rounded-2xl p-4 space-y-2 backdrop-blur-sm hover:from-[#D4AF37]/30 transition-all group"><span class="text-2xl">🌳</span><div class="font-bold text-[14px] text-[#D4AF37]">Gardens</div><div class="text-[11.5px] text-white/60 leading-normal">Weddings & events for 300 guests.</div><div class="pt-2 text-[11px] text-white font-bold flex items-center gap-1">Plan Event <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-14 max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-black/5 p-6 sm:p-8 flex flex-col justify-between native-shadow"><div class="space-y-4"><div class="text-[#D4AF37] text-xl font-bold">★★★★★</div><p class="font-serif text-[18px] sm:text-[20px] text-[#0A1E3C] font-medium leading-relaxed italic">"We had a marvelous weekend at Mbarara Grand Holiday Hotel. Spacious, sparkling clean, exceptionally great customer service."</p></div><div class="flex items-center gap-3 mt-6 border-t border-black/5 pt-4"><div class="w-10 h-10 rounded-full bg-[#C6A15A]/20 flex items-center justify-center font-bold text-[#0A1E3C]">KR</div><div><div class="text-[13px] font-bold text-[#0A1E3C]">Katushabe Resty</div><div class="text-[11px] text-black/45">Kampala, Uganda</div></div></div></div>
+        <div class="lg:col-span-5 bg-[#0A1E3C] text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 native-shadow-lg"><div class="space-y-3"><div class="text-[11px] tracking-widest uppercase font-bold text-[#D4AF37]">Location Finder</div><h3 class="font-serif text-[22px] font-bold">Easy Access Mbarara</h3><p class="text-[13px] text-white/70 leading-relaxed">Near Tatitwe, Mbarara City. Convenient for travellers to Queen Elizabeth or Lake Mburo parks.</p></div><div class="relative w-full flex-grow min-h-[220px] rounded-2xl overflow-hidden border border-white/10 shadow-inner"><iframe src="https://maps.google.com/maps?q=MBARARA+GRAND+HOTEL+LTD,+Mbarara,+Uganda&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0" loading="lazy"></iframe></div><div class="flex items-center justify-between pt-2 border-t border-white/10"><span class="text-[11px] text-white/50">Turn-by-turn directions?</span><a href="https://maps.google.com/?cid=9497146970383646671" target="_blank" class="text-[12px] font-bold text-[#D4AF37] hover:underline inline-flex items-center gap-1"><span>Open Maps</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i></a></div></div>
+      </section>
+    </div>
+
+    <!-- PLANNER TAB (kept logic) -->
+    <div id="tab-planner" class="tab-content hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <div class="text-center max-w-2xl mx-auto space-y-2 mb-8"><div class="text-[11px] tracking-[0.2em] uppercase font-bold text-[#C6A15A]">Uganda's Premier Celebrations Venue</div><h2 class="font-serif text-[34px] sm:text-[42px] font-extrabold leading-tight">Grand Event Planner</h2><p class="text-[13.5px] text-black/55">Plan weddings, birthdays, seminars. Instant budget estimate with native booking.</p></div>
+        <div class="flex items-center justify-center gap-2 max-w-md mx-auto bg-white p-1 rounded-full border border-black/5 shadow-sm mb-10"><button onclick="setEventPlanner('graduation')" id="plan-btn-graduation" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm">🎓 Graduation</button><button onclick="setEventPlanner('birthday')" id="plan-btn-birthday" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5">🎈 Birthday</button><button onclick="setEventPlanner('retreat')" id="plan-btn-retreat" class="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5">🏢 Seminar</button></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 bg-white rounded-3xl border border-black/5 shadow-sm p-6 sm:p-8 space-y-6 native-shadow"><div><h3 id="planner-title" class="font-serif text-[22px] font-bold text-[#0A1E3C]">Plan Your Dream Garden Wedding</h3><p class="text-[12.5px] text-black/50 mt-1">Customize configurations. Includes parking & coordination.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Event Date</label><div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3"><i data-lucide="calendar" class="w-3.5 h-3.5 text-[#C6A15A] mr-2"></i><input type="date" id="event-date" class="bg-transparent text-[13px] font-semibold outline-none w-full text-black/85" /></div></div><div><div class="flex justify-between items-center mb-1.5"><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55">Guest Size</label><span id="guest-count-badge" class="text-[12.5px] font-extrabold text-[#C6A15A]">150 Guests</span></div><div class="relative h-11 rounded-xl border border-black/10 bg-[#FFFBF2]/40 flex items-center px-3.5"><i data-lucide="users" class="w-3.5 h-3.5 text-[#C6A15A] mr-3 shrink-0"></i><input type="range" id="planner-guests-slider" min="10" max="300" value="150" oninput="updateGuestsVal(this.value)" class="w-full h-1.5 bg-black/10 rounded-lg appearance-none cursor-pointer accent-[#0A1E3C]" /></div></div></div><div><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-1.5">Target Budget (UGX)</label><div class="relative h-11 rounded-xl border border-black/10 bg-white flex items-center px-3.5"><span class="text-black/40 text-xs font-bold mr-2">UGX</span><input type="number" id="planner-budget-input" value="12000000" oninput="updateBudgetVal(this.value)" class="bg-transparent text-[13px] font-bold outline-none w-full text-black/85" /></div></div><div class="space-y-3.5"><label class="block text-[11px] font-bold tracking-widest uppercase text-black/55 mb-2">Required Services</label><div id="planner-services-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div></div></div>
+          <div class="lg:col-span-5 space-y-6"><div class="bg-[#0A1E3C] text-white rounded-[28px] shadow-[0_24px_50px_rgba(7,21,43,0.18)] border border-white/10 overflow-hidden native-shadow-lg"><div class="p-6 sm:p-7 space-y-5"><div><span class="text-[10px] uppercase tracking-widest font-bold text-[#D4AF37]">Budget Analysis</span><h4 class="font-serif text-[18px] font-bold">Quotation Estimate</h4><div class="text-[11px] text-white/50 mt-1">Base resort tariffs • Native checkout</div></div><div class="p-5 rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-center items-center text-center space-y-1"><span class="text-[10px] uppercase tracking-widest font-bold text-white/40">Estimated Total Cost</span><span id="estimated-total" class="font-serif text-[28px] sm:text-[32px] font-black text-[#D4AF37]">UGX 0</span><span id="estimated-total-details" class="text-[11px] text-white/60">Based on 150 guests</span></div><div id="budget-alert-banner" class="p-4 rounded-2xl border flex items-start gap-3 text-[12.5px]"></div><div class="space-y-2"><div class="text-[11px] font-bold tracking-wider uppercase text-white/40">Breakdown</div><div id="planner-breakdown-list" class="space-y-1.5 max-h-[160px] overflow-y-auto pr-1 no-scrollbar"></div></div><button onclick="sendEventQuoteToWhatsApp()" class="w-full h-12 rounded-xl bg-[#128C7E] text-white font-bold text-[13.5px] hover:bg-[#075E54] flex items-center justify-center gap-2 shadow-lg transition-all"><span>💬 Request WhatsApp Quote</span></button></div><div class="h-1.5 bg-gradient-to-r from-[#D4AF37] via-[#C6A15A] to-[#E9D39A]"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ENHANCED ROOM DETAIL BOOKING MODAL (NATIVE SHEET) -->
+  <div id="booking-modal" class="fixed inset-0 z-[60] hidden">
+    <div onclick="closeBookingModal()" class="absolute inset-0 bg-[#07152B]/70 backdrop-blur-[6px]"></div>
+    <div id="booking-sheet" class="sheet sheet-enter absolute bottom-0 left-0 right-0 md:top-1/2 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:-translate-y-1/2 md:w-[95%] md:max-w-[960px] bg-white md:rounded-[28px] rounded-t-[28px] max-h-[92vh] md:max-h-[88vh] flex flex-col overflow-hidden native-shadow-lg">
+      <div class="md:hidden w-full flex justify-center pt-3 pb-1"><div class="w-10 h-1.5 rounded-full bg-black/15"></div></div>
+      <!-- Content injected via JS -->
+      <div id="booking-modal-content" class="overflow-y-auto no-scrollbar flex-1"></div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAIL MODAL (Restaurant, Spa, Bar, etc) -->
+  <div id="service-modal" class="fixed inset-0 z-[60] hidden">
+    <div onclick="closeServiceModal()" class="absolute inset-0 bg-[#07152B]/70 backdrop-blur-[6px]"></div>
+    <div id="service-sheet" class="sheet sheet-enter absolute bottom-0 left-0 right-0 md:top-1/2 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:-translate-y-1/2 md:w-[95%] md:max-w-[880px] bg-white md:rounded-[28px] rounded-t-[28px] max-h-[92vh] md:max-h-[88vh] flex flex-col overflow-hidden native-shadow-lg">
+      <div class="md:hidden w-full flex justify-center pt-3 pb-1"><div class="w-10 h-1.5 rounded-full bg-black/15"></div></div>
+      <div id="service-modal-content" class="overflow-y-auto no-scrollbar flex-1"></div>
+    </div>
+  </div>
+
+  <footer class="bg-[#07152B] text-white/75 mt-auto border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="space-y-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center font-serif font-black text-white text-[15px] tracking-wider">GH</div><div><div class="font-serif font-bold text-white tracking-wide text-[13px] leading-tight">MBARARA GRAND HOLIDAY HOTEL</div><div class="text-[10px] tracking-[0.2em] text-[#D4AF37] uppercase font-bold leading-none">The Perfect Getaway</div></div></div><p class="text-[13px] leading-6 text-white/55 max-w-sm">Premium luxury, uncompromised comfort, and authentic Ugandan hospitality. Native app booking with best rate guarantee.</p></div>
+      <div><div class="text-white font-semibold text-[13px] tracking-widest uppercase mb-4">Contact</div><ul class="space-y-3 text-[13px] text-white/60"><li class="flex items-start gap-2.5"><i data-lucide="phone" class="w-4 h-4 text-[#C6A15A] shrink-0 mt-0.5"></i><div><p>+256 761 422 899</p><p>+256 776 506 052</p></div></li><li class="flex items-start gap-2.5"><i data-lucide="map-pin" class="w-4 h-4 text-[#C6A15A] shrink-0 mt-0.5"></i><span>Near Tatitwe, Mbarara City</span></li></ul></div>
+      <div><div class="text-white font-semibold text-[13px] tracking-widest uppercase mb-4">Hours</div><ul class="space-y-3 text-[13px] text-white/60"><li class="flex justify-between border-b border-white/5 pb-1.5"><span>Reception</span><span class="font-medium text-[#D4AF37]">24 Hours</span></li><li class="flex justify-between border-b border-white/5 pb-1.5"><span>Restaurant</span><span>6:30 AM - 11 PM</span></li><li class="flex justify-between border-b border-white/5 pb-1.5"><span>Spa</span><span>9 AM - 10 PM</span></li></ul></div>
+      <div class="space-y-4"><div class="text-white font-semibold text-[13px] tracking-widest uppercase">Direct Bookings</div><a href="https://wa.me/256776506052?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel%20%F0%9F%91%8B" target="_blank" class="inline-flex items-center justify-center gap-2 h-11 px-6 w-full rounded-full bg-[#128C7E] text-white font-semibold text-[13.5px] hover:bg-[#075E54]"><span>Chat on WhatsApp</span></a><div class="flex gap-2"><div class="flex-1 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[11px]">MTN MoMo</div><div class="flex-1 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[11px]">Visa • MC</div></div></div>
+    </div>
+    <div class="border-t border-white/10 bg-[#040e1e] py-4 text-center text-[11px] text-white/40 safe-bottom">&copy; 2026 Mbarara Grand Holiday Hotel • Native App Experience • Best Rate Direct</div>
+  </footer>
+
+  <!-- NATIVE BOTTOM NAV -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 safe-bottom pointer-events-none">
+    <div class="mx-3 mb-3 glass-dark border border-white/10 rounded-[22px] shadow-[0_12px_40px_rgba(0,0,0,0.35)] px-2 py-2 flex items-center justify-around pointer-events-auto">
+      <button onclick="switchTab('home');window.scrollTo({top:0,behavior:'smooth'});haptic()" id="bottom-nav-home" class="flex flex-col items-center gap-1 min-w-[64px] py-1.5 px-3 rounded-full bg-white text-[#0A1E3C] transition-all"><i data-lucide="hotel" class="w-[18px] h-[18px]"></i><span class="text-[10px] font-bold">Rooms</span></button>
+      <button onclick="document.getElementById('experience-slider-section').scrollIntoView({behavior:'smooth'});haptic()" class="flex flex-col items-center gap-1 min-w-[64px] py-1.5 text-white/70"><i data-lucide="compass" class="w-[18px] h-[18px] text-[#C6A15A]"></i><span class="text-[10px] font-medium">Explore</span></button>
+      <button onclick="switchTab('planner');window.scrollTo({top:0,behavior:'smooth'});haptic()" id="bottom-nav-planner" class="flex flex-col items-center gap-1 min-w-[64px] py-1.5 text-white/70"><i data-lucide="calendar-days" class="w-[18px] h-[18px] text-[#C6A15A]"></i><span class="text-[10px] font-medium">Events</span></button>
+      <a href="https://wa.me/256761422899?text=Hello%20Mbarara%20Grand%20Holiday%20Hotel" target="_blank" onclick="haptic()" class="flex flex-col items-center gap-1 min-w-[64px] py-1.5 px-3 rounded-full bg-[#128C7E] text-white"><span class="text-[16px] leading-none">💬</span><span class="text-[10px] font-bold">Book</span></a>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    const ROOMS_DATA = [
+      { id: "standard", name: "Standard Comfort Room", price: 120000, tag: "Standard", guests: 2, beds: 1, baths: 1, size: "25 m²", img: "14.png", gallery: ["14.png","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"], facilities: ["Private Bathroom", "Room Service", "Single Bed", "Smart TV", "Free WiFi"], rating: 4.8, reviews: 124, desc: "Cozy comfort with modern essentials, perfect for solo travelers and couples. Sparkling clean, quiet, and secure." },
+      { id: "deluxe", name: "Deluxe Executive Room", price: 180000, tag: "Deluxe", guests: 2, beds: 1, baths: 1, size: "32 m²", img: "17.png", gallery: ["17.png","https://images.unsplash.com/photo-1566669437688-88b0d56f06a8?w=800","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800"], facilities: ["Balcony View", "Mini Fridge", "Room Service", "Bathtub", "Work Desk"], rating: 4.9, reviews: 98, desc: "Spacious king suite with private balcony, luxury bathtub and garden views. Work-ready and romantic." },
+      { id: "exec", name: "Grand Executive Suite", price: 280000, tag: "Executive", guests: 3, beds: 1, baths: 2, size: "45 m²", img: "16.png", gallery: ["16.png","https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800"], facilities: ["Jacuzzi", "Mini Bar", "All Meals Included", "VIP Lounge", "2 Bathrooms"], rating: 5.0, reviews: 76, desc: "Top-floor luxury with Jacuzzi, minibar, lounge access and panoramic city views. Business meets indulgence." },
+      { id: "family", name: "Grand Family Suite", price: 350000, tag: "Family", guests: 5, beds: 2, baths: 2, size: "60 m²", img: "17.png", gallery: ["17.png","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800","https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800"], facilities: ["Family Size", "Mini Fridge", "All Meals Included", "2 Bedrooms", "Kids Friendly"], rating: 4.9, reviews: 54, desc: "Two-bedroom family haven with living area, ideal for groups and long stays. Extra space, extra care." }
+    ];
+
+    const HOTEL_SECTIONS = [
+      { id: "restaurant", title: "Grand Restaurant", subtitle: "Farm-to-Table Dining", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800", badge: "Chef's Special", desc: "Organic Ugandan and continental cuisine, wood-fired grills and fresh lake fish. Breakfast buffet included.", cta: "View Menu" },
+      { id: "spa", title: "Therapeutic Spa", subtitle: "Wellness & Sauna", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800", badge: "20% Off Today", desc: "Swedish, deep-tissue, hot stone and aromatherapy. Couple rooms & sauna.", cta: "Book Treatment" },
+      { id: "bar", title: "Lounge & Terrace Bar", subtitle: "Sunset Cocktails", img: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800", badge: "Happy Hour 5-7", desc: "Craft cocktails, Ugandan coffee, terrace views over Mbarara hills. Live acoustic Fridays.", cta: "Explore Drinks" },
+      { id: "pool", title: "Pool & Leisure Club", subtitle: "Infinity Vibes", img: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800", badge: "Family Friendly", desc: "Sparkling pool, kids splash zone, sun loungers and poolside service.", cta: "See Pool" },
+      { id: "conference", title: "Conference Halls", subtitle: "Seminar & Retreat", img: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800", badge: "Up to 300 Pax", desc: "Fiber internet, projectors, breakout rooms and dedicated coordinator.", cta: "Check Halls" },
+      { id: "gardens", title: "Gardens & Events", subtitle: "Weddings Under Stars", img: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800", badge: "Most Booked", desc: "Manicured gardens for weddings, graduations and birthdays. Fairy lights & floral arches.", cta: "Plan Event" }
+    ];
+
+    const SERVICES_DATA = {
+      restaurant: { title: "Grand Restaurant & Bar", images: ["https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800","https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"], description: "Savor authentic Ankole flavors and continental classics.", menu: [{name:"Full English Breakfast", price:"Included", desc:"Eggs, sausage, beans, toast, fresh juice"}, {name:"Luwombo Chicken", price:"UGX 35k", desc:"Traditional banana leaf stew"}, {name:"Grilled Tilapia", price:"UGX 45k", desc:"Lake Victoria fish, chips & veg"}, {name:"Beef Steak", price:"UGX 55k", desc:"Grilled to perfection"}], hours:"6:30 AM - 11 PM", phone:"+256 761 422 899" },
+      spa: { title: "Therapeutic Spa & Sauna", images: ["https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800","https://images.unsplash.com/photo-1570172619644-dfd03ed1350b?w=800"], description: "Unwind with expert therapists, organic oils and serene treatment rooms.", treatments: [{name:"Swedish Massage", duration:"60 min", price:"UGX 80k"}, {name:"Deep Tissue", duration:"75 min", price:"UGX 120k"}, {name:"Hot Stone Therapy", duration:"90 min", price:"UGX 150k"}, {name:"Couple Spa Retreat", duration:"120 min", price:"UGX 250k"}, {name:"Sauna Access", duration:"45 min", price:"UGX 30k"}], hours:"9 AM - 10 PM" },
+      bar: { title: "Lounge Bar & Terrace", images: ["https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800","https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800"], description: "Sunset cocktails, premium spirits and Mbarara's best terrace view.", drinks: [{name:"Umesa Spritz", price:"UGX 18k"}, {name:"Nile Special Tower", price:"UGX 35k"}, {name:"Ankole Coffee Martini", price:"UGX 22k"}], hours:"11 AM - Midnight" },
+      pool: { title:"Pool & Leisure Club", images:["https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800"], description:"Dive into relaxation. Day passes available.", features:["Heated Pool","Kids Splash","Poolside Bar","Sun Loungers","Towels Included"], price:"Free for guests • Day pass UGX 20k" },
+      conference: { title:"Conference & Seminar Halls", images:["https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"], description:"Host impactful seminars with high-speed fiber and full AV support.", halls:[{name:"Grand Hall", cap:"200 Pax", price:"UGX 800k/day"}, {name:"Boardroom", cap:"30 Pax", price:"UGX 400k/day"}, {name:"Garden Tent", cap:"300 Pax", price:"UGX 1.2M/day"}] },
+      gardens: { title:"Gardens & Outdoor Events", images:["https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800"], description:"Celebrate under fairy lights. Weddings, graduations, birthdays.", packages:["Floral Arch","String Lights","Sound & DJ","Catering","Photobooth"] }
+    };
+
+    let currentCategory = "Popular";
+    let activePlanner = "graduation";
+    let selectedRoom = null;
+    let roomCount = 1;
+    let guestCount = { adults: 2, children: 1 };
+    let currentGalleryIndex = 0;
+    let extras = { breakfast: true, lateCheckout: false, airportPickup: false };
+    const SERVICES_PRICING = {
+      graduation: [{ id: "venue", name: "Grand Open Gardens Venue Hire", price: 1200000, icon: "🌳" },{ id: "decor", name: "Graduation Theme Decor & Photo Booth", price: 1000000, icon: "✨" },{ id: "catering", name: "Celebration Buffet (Per Guest)", price: 35000, icon: "🍛", perGuest: true },{ id: "sound", name: "Premium sound system & Cordless Mics", price: 500000, icon: "🔊" }],
+      birthday: [{ id: "venue", name: "Poolside Venue Hire", price: 400000, icon: "🏊♂" },{ id: "decor", name: "Colorful Balloons decor", price: 300000, icon: "🎈" },{ id: "catering", name: "Drinks & Bites (Per Guest)", price: 25000, icon: "🍹", perGuest: true },{ id: "cake", name: "Custom 3-Tier Grand Cake", price: 450000, icon: "🎂" }],
+      retreat: [{ id: "hall", name: "Conference Hall Venue Hire", price: 800000, icon: "🏢" },{ id: "meals", name: "Buffet & Coffee teas (Per Guest)", price: 35000, icon: "☕", perGuest: true },{ id: "rooms", name: "Overnight Shared Twin Rooms (Per Guest)", price: 70000, icon: "🛌", perGuest: true }]
+    };
+    let selectedServices = { graduation: ["venue","decor","catering"], birthday: ["venue","catering","cake"], retreat: ["hall","meals"] };
+    let plannerGuests = 100; let plannerBudget = 6000000;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date().toISOString().split('T')[0];
+      const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate()+1);
+      const tomorrowStr = tomorrow.toISOString().split('T')[0];
+      document.getElementById("check-in-date").value = today;
+      document.getElementById("check-out-date").value = tomorrowStr;
+      document.getElementById("event-date").value = today;
+      renderRooms(); renderBanners(); setEventPlanner("graduation");
+      updateNights(); document.getElementById("check-in-date").addEventListener('change', updateNights); document.getElementById("check-out-date").addEventListener('change', updateNights);
+      lucide.createIcons();
+    });
+
+    function haptic(type='light'){ if(navigator.vibrate){ navigator.vibrate(type==='light'?20:40); } }
+    function triggerToast(msg){ const b=document.getElementById("toast-banner"); document.getElementById("toast-message").innerText=msg; b.classList.remove("hidden"); setTimeout(()=>b.classList.add("hidden"),3000); }
+
+    function switchTab(tabId){
+      document.querySelectorAll(".tab-content").forEach(el=>el.classList.add("hidden"));
+      document.getElementById(`tab-${tabId}`).classList.remove("hidden");
+      ["home","planner"].forEach(n=>{
+        const btn=document.getElementById(`nav-${n}`); const b2=document.getElementById(`bottom-nav-${n}`);
+        if(!btn) return;
+        if(n===tabId){
+          btn.className="flex items-center gap-2 h-9 px-5 rounded-full text-[13px] font-semibold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm";
+          if(b2){ b2.className="flex flex-col items-center gap-1 min-w-[64px] py-1.5 px-3 rounded-full bg-white text-[#0A1E3C] transition-all"; }
+        } else {
+          btn.className="flex items-center gap-2 h-9 px-5 rounded-full text-[13px] font-semibold tracking-wide transition-all text-[#0A1E3C]/70 hover:text-[#0A1E3C] hover:bg-black/5";
+          if(b2){ b2.className="flex flex-col items-center gap-1 min-w-[64px] py-1.5 text-white/70"; }
+        }
+      });
+      lucide.createIcons(); triggerToast(`${tabId==='home'?'Rooms':'Event Planner'} opened`);
+    }
+
+    function renderBanners(){
+      const cont=document.getElementById("experience-slider"); const dots=document.getElementById("banner-dots"); cont.innerHTML="";
+      HOTEL_SECTIONS.forEach((sec, i)=>{
+        const card=document.createElement("button");
+        card.className="banner-card group relative shrink-0 w-[84%] sm:w-[380px] h-[220px] rounded-[24px] overflow-hidden text-left native-shadow hover:shadow-xl transition-all";
+        card.onclick=()=>{ haptic(); openServiceModal(sec.id); };
+        card.innerHTML=`
+          <img src="${sec.img}" class="absolute inset-0 w-full h-full object-cover img-zoom" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/90 text-[10px] font-bold tracking-wide uppercase">${sec.badge}</div>
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="text-[10px] uppercase tracking-widest font-bold text-[#D4AF37]">${sec.subtitle}</div>
+            <div class="font-serif text-[18px] font-bold text-white leading-tight mt-0.5">${sec.title}</div>
+            <div class="text-[12px] text-white/70 line-clamp-1 mt-1">${sec.desc}</div>
+            <div class="mt-3 inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-white text-[#0A1E3C] text-[11px] font-bold group-hover:bg-[#D4AF37] transition-colors">${sec.cta} <i data-lucide="arrow-up-right" class="w-3 h-3"></i></div>
+          </div>`;
+        cont.appendChild(card);
+      });
+      dots.innerHTML = HOTEL_SECTIONS.map((_,i)=>`<div class="w-1.5 h-1.5 rounded-full ${i===0?'bg-[#0A1E3C] w-5':'bg-black/20'} transition-all"></div>`).join('');
+      cont.addEventListener('scroll', ()=>{
+        const idx = Math.round(cont.scrollLeft / (cont.firstChild?.offsetWidth + 16 || 1));
+        dots.innerHTML = HOTEL_SECTIONS.map((_,i)=>`<div class="w-1.5 h-1.5 rounded-full ${i===idx?'bg-[#0A1E3C] w-5':'bg-black/20'} transition-all"></div>`).join('');
+      });
+    }
+    function scrollBanners(dir){ const cont=document.getElementById("experience-slider"); cont.scrollBy({left: dir*400, behavior:'smooth'}); haptic(); }
+
+    function toggleGuestPicker(){ document.getElementById("guest-picker-dropdown").classList.toggle("hidden"); haptic(); }
+    function changeGuest(type, step){ const min=type==='adults'?1:0; guestCount[type]=Math.max(min, Math.min(10, guestCount[type]+step)); document.getElementById(`count-${type}`).innerText=guestCount[type]; updateOccupancy(); haptic(); }
+    function changeRoomCount(step){ roomCount=Math.max(1, Math.min(5, roomCount+step)); document.getElementById("count-rooms").innerText=roomCount; updateOccupancy(); haptic(); }
+    function updateOccupancy(){ const total=guestCount.adults+guestCount.children; document.getElementById("guest-occupancy-summary").innerText=`${total} Guest${total>1?'s':''} • ${roomCount} Room${roomCount>1?'s':''}`; updateNights(); }
+    function updateNights(){ const ci=new Date(document.getElementById("check-in-date").value); const co=new Date(document.getElementById("check-out-date").value); let nights=Math.round((co-ci)/(1000*60*60*24)); if(isNaN(nights)||nights<1) nights=1; document.getElementById("nights-count").innerText=nights; return nights; }
+    function checkRoomAvailability(){ const ci=document.getElementById("check-in-date").value; const co=document.getElementById("check-out-date").value; if(new Date(co)<=new Date(ci)){ triggerToast("Check-out must be after check-in."); return; } const nights=updateNights(); const text=`Hello Mbarara Grand Holiday Hotel 👋\n\nI want to check room availability:\n📅 Check-In: ${ci}\n📅 Check-Out: ${co} (${nights} night${nights>1?'s':''})\n👥 Guests: ${guestCount.adults} Adults, ${guestCount.children} Children\n🏨 Rooms: ${roomCount}\n\nPlease advise best rate.`; window.open(`https://wa.me/256789462495?text=${encodeURIComponent(text)}`,"_blank"); }
+
+    function renderRooms(){
+      const container=document.getElementById("rooms-list"); container.innerHTML="";
+      const list=currentCategory==="Popular"?ROOMS_DATA:ROOMS_DATA.filter(r=>r.tag===currentCategory);
+      list.forEach(room=>{
+        const card=document.createElement("div");
+        card.className="group bg-white rounded-[24px] overflow-hidden border border-black/5 native-shadow hover:native-shadow-lg transition-all flex flex-col";
+        card.innerHTML=`
+          <div class="relative h-[220px] overflow-hidden bg-black/10">
+            <img src="${room.img}" alt="${room.name}" class="w-full h-full object-cover img-zoom" onerror="this.src='https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800'"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="absolute top-3 left-3 flex gap-2">
+              <span class="px-2.5 h-6 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-[#0A1E3C] flex items-center gap-1 shadow-sm">⭐ ${room.rating}</span>
+              <span class="px-2.5 h-6 rounded-full bg-[#0A1E3C]/90 text-white text-[10px] font-bold tracking-wider uppercase flex items-center border border-white/20">${room.tag}</span>
+            </div>
+            <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm hover:bg-white cursor-pointer" onclick="event.stopPropagation(); triggerToast('Saved to wishlist ❤️')"><i data-lucide="heart" class="w-4 h-4 text-black/60"></i></div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-medium border border-white/20">${room.size} • ${room.guests} Guests</span>
+              <span class="px-2 py-1 rounded-full bg-[#D4AF37] text-[#0A1E3C] text-[10px] font-bold">Tap for Gallery</span>
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div class="space-y-1.5"><h3 class="font-serif text-[17px] font-bold text-[#0A1E3C] leading-snug group-hover:text-[#C6A15A] transition-colors">${room.name}</h3><p class="text-[12px] text-black/50 line-clamp-1">${room.desc}</p><div class="flex flex-wrap gap-1.5 pt-1">${room.facilities.slice(0,3).map(f=>`<span class="px-2 py-1 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] text-[10px] font-medium text-black/60">${f}</span>`).join('')}<span class="px-2 py-1 rounded-full bg-black/5 text-[10px]">+${room.facilities.length-3}</span></div></div>
+            <div class="flex items-end justify-between pt-3 border-t border-black/5">
+              <div><span class="block text-[10px] uppercase tracking-widest font-bold text-black/35">Per Night • Pay at Hotel</span><span class="font-serif text-[18px] font-extrabold text-[#0A1E3C]">UGX ${room.price.toLocaleString()}</span><span class="text-[11px] text-black/40 line-through ml-1">UGX ${Math.round(room.price*1.18).toLocaleString()}</span></div>
+              <button onclick="openBookingModal('${room.id}')" class="h-10 px-5 rounded-full bg-[#0A1E3C] text-white text-[12.5px] font-bold hover:bg-[#C6A15A] hover:text-[#0A1E3C] transition-all flex items-center gap-1.5">View & Book <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></button>
+            </div>
+          </div>`;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+    function filterRooms(cat){ currentCategory=cat; document.querySelectorAll(".room-pill").forEach(el=>{ if(el.innerText.includes(cat) || (cat==='Popular' && el.innerText.includes('All'))){ el.className="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white border border-[#0A1E3C]"; } else { el.className="room-pill h-9 px-4 rounded-full text-xs font-bold tracking-wide transition-all bg-white text-[#0A1E3C]/70 border border-black/10 hover:border-black/30"; } }); renderRooms(); haptic(); triggerToast(`${cat} suites loaded`); }
+
+    // RICH ROOM MODAL WITH GALLERY
+    function openBookingModal(roomId){
+      selectedRoom=ROOMS_DATA.find(r=>r.id===roomId); if(!selectedRoom) return;
+      currentGalleryIndex=0; extras={breakfast:true, lateCheckout:false, airportPickup:false};
+      const nights=updateNights();
+      const modalContent=document.getElementById("booking-modal-content");
+      modalContent.innerHTML=`
+        <div class="relative">
+          <!-- Gallery -->
+          <div class="relative h-[48vh] md:h-[420px] bg-black overflow-hidden">
+            <img id="gallery-main-img" src="${selectedRoom.gallery[0]}" class="w-full h-full object-cover" onerror="this.src='${selectedRoom.img}'"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+            <div class="absolute top-4 left-4 right-4 flex justify-between items-start">
+              <div class="flex gap-2"><span class="px-3 h-7 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold flex items-center gap-1"><i data-lucide="star" class="w-3 h-3 text-[#C6A15A] fill-[#C6A15A]"></i> ${selectedRoom.rating} • ${selectedRoom.reviews} reviews</span><span class="px-3 h-7 rounded-full bg-[#0A1E3C] text-white text-[11px] font-bold uppercase tracking-wide border border-white/20">${selectedRoom.tag}</span></div>
+              <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black/60"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <button onclick="prevGallery()" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-lg hover:bg-white"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+            <button onclick="nextGallery()" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-lg hover:bg-white"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">${selectedRoom.gallery.map((_,i)=>`<div class="gallery-dot w-1.5 h-1.5 rounded-full ${i===0?'bg-white w-5':'bg-white/50'} transition-all"></div>`).join('')}</div>
+            <div class="absolute bottom-4 left-4 md:hidden px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-white text-[11px] font-bold border border-white/20">Swipe for more photos</div>
+          </div>
+          <div class="px-4 py-3 flex gap-2 overflow-x-auto no-scrollbar bg-white border-b border-black/5">
+            ${selectedRoom.gallery.map((img,i)=>`<button onclick="setGallery(${i})" class="gallery-thumb shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 ${i===0?'border-[#0A1E3C]':'border-transparent'}"><img src="${img}" class="w-full h-full object-cover" onerror="this.src='${selectedRoom.img}'"/></button>`).join('')}
+          </div>
+        </div>
+        <div class="p-5 md:p-7 grid md:grid-cols-12 gap-6">
+          <div class="md:col-span-7 space-y-5">
+            <div><div class="flex items-start justify-between gap-3"><h2 class="font-serif text-[22px] md:text-[26px] font-bold leading-tight text-[#0A1E3C]">${selectedRoom.name}</h2><div class="text-right shrink-0"><div class="font-serif text-[20px] font-black text-[#0A1E3C]">UGX ${selectedRoom.price.toLocaleString()}</div><div class="text-[11px] text-black/50">per night • ${nights} night${nights>1?'s':''}</div></div></div><p class="text-[13px] text-black/60 leading-relaxed mt-2">${selectedRoom.desc}</p></div>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="rounded-2xl bg-[#FFFBF2] border border-[#E9DFC7] p-3 text-center"><i data-lucide="users" class="w-4 h-4 mx-auto text-[#C6A15A] mb-1"></i><div class="text-[11px] font-bold">${selectedRoom.guests} Guests</div><div class="text-[10px] text-black/40">Max occupancy</div></div>
+              <div class="rounded-2xl bg-[#FFFBF2] border border-[#E9DFC7] p-3 text-center"><i data-lucide="bed-double" class="w-4 h-4 mx-auto text-[#C6A15A] mb-1"></i><div class="text-[11px] font-bold">${selectedRoom.beds} Bed • ${selectedRoom.size}</div><div class="text-[10px] text-black/40">${selectedRoom.baths} Bath</div></div>
+              <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-3 text-center"><i data-lucide="badge-check" class="w-4 h-4 mx-auto text-emerald-600 mb-1"></i><div class="text-[11px] font-bold text-emerald-800">Free Breakfast</div><div class="text-[10px] text-emerald-700/70">Wi-Fi & Parking</div></div>
+            </div>
+            <div><h4 class="text-[11px] font-bold tracking-widest uppercase text-black/50 mb-2">Premium Amenities</h4><div class="flex flex-wrap gap-2">${selectedRoom.facilities.map(f=>`<span class="px-3 py-1.5 rounded-full bg-white border border-black/10 text-[11px] font-medium flex items-center gap-1.5"><i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>${f}</span>`).join('')}</div></div>
+            <div class="rounded-2xl bg-[#0A1E3C] text-white p-4 flex gap-3"><div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"><i data-lucide="info" class="w-5 h-5 text-[#D4AF37]"></i></div><div class="text-[12px] leading-relaxed text-white/70"><span class="font-bold text-white">Native App Policy:</span> Free cancellation before 6 PM. Pay at property • MTN MoMo & Card accepted. Best rate guaranteed when booking direct.</div></div>
+            <!-- Extras -->
+            <div><h4 class="text-[11px] font-bold tracking-widest uppercase text-black/50 mb-2">Add Extras (Optional)</h4><div class="space-y-2">
+              <label class="flex items-center justify-between p-3 rounded-xl border ${extras.breakfast?'border-[#0A1E3C] bg-[#0A1E3C]/5':'border-black/10 bg-white'} cursor-pointer"><span class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] flex items-center justify-center">🍳</span><span><div class="text-[12px] font-bold">Organic Breakfast Buffet</div><div class="text-[10px] text-black/50">Included free</div></span></span><input type="checkbox" checked disabled class="accent-[#0A1E3C]"></label>
+              <label class="flex items-center justify-between p-3 rounded-xl border ${extras.lateCheckout?'border-[#0A1E3C] bg-[#0A1E3C]/5':'border-black/10 bg-white'} cursor-pointer" onclick="toggleExtra('lateCheckout')"><span class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] flex items-center justify-center">🕐</span><span><div class="text-[12px] font-bold">Late Checkout (2 PM)</div><div class="text-[10px] text-black/50">+ UGX 20,000</div></span></span><span class="w-5 h-5 rounded-full border-2 ${extras.lateCheckout?'bg-[#0A1E3C] border-[#0A1E3C] text-white':'border-black/20'} flex items-center justify-center text-[10px]">${extras.lateCheckout?'✓':''}</span></label>
+              <label class="flex items-center justify-between p-3 rounded-xl border ${extras.airportPickup?'border-[#0A1E3C] bg-[#0A1E3C]/5':'border-black/10 bg-white'} cursor-pointer" onclick="toggleExtra('airportPickup')"><span class="flex items-center gap-2.5"><span class="w-8 h-8 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] flex items-center justify-center">🚗</span><span><div class="text-[12px] font-bold">Airport / Bus Pickup</div><div class="text-[10px] text-black/50">+ UGX 50,000</div></span></span><span class="w-5 h-5 rounded-full border-2 ${extras.airportPickup?'bg-[#0A1E3C] border-[#0A1E3C] text-white':'border-black/20'} flex items-center justify-center text-[10px]">${extras.airportPickup?'✓':''}</span></label>
+            </div></div>
+          </div>
+          <div class="md:col-span-5 space-y-4">
+            <div class="bg-[#FFFBF2] rounded-2xl border border-[#E9DFC7] p-4 space-y-3.5">
+              <h4 class="font-serif text-[16px] font-bold">Complete Your Booking</h4>
+              <div class="grid grid-cols-2 gap-2">
+                <div><label class="block text-[10px] font-bold tracking-widest uppercase text-black/50 mb-1">Check-In</label><input type="date" id="modal-check-in" value="${document.getElementById('check-in-date').value}" class="w-full h-10 px-3 rounded-xl border border-black/10 text-[12px] font-semibold bg-white"/></div>
+                <div><label class="block text-[10px] font-bold tracking-widest uppercase text-black/50 mb-1">Check-Out</label><input type="date" id="modal-check-out" value="${document.getElementById('check-out-date').value}" class="w-full h-10 px-3 rounded-xl border border-black/10 text-[12px] font-semibold bg-white"/></div>
+              </div>
+              <div><label class="block text-[10px] font-bold tracking-widest uppercase text-black/50 mb-1">Full Name *</label><input type="text" id="modal-guest-name" placeholder="John Kampala" class="w-full h-10 px-3 rounded-xl border border-black/10 text-[13px] font-semibold bg-white outline-none focus:border-[#C6A15A]"/></div>
+              <div><label class="block text-[10px] font-bold tracking-widest uppercase text-black/50 mb-1">Phone *</label><input type="tel" id="modal-guest-phone" placeholder="+256 700 000 000" class="w-full h-10 px-3 rounded-xl border border-black/10 text-[13px] font-semibold bg-white outline-none focus:border-[#C6A15A]"/></div>
+              <div><label class="block text-[10px] font-bold tracking-widest uppercase text-black/50 mb-1">Special Requests</label><textarea id="modal-guest-requests" placeholder="Vegan breakfast, baby cot..." class="w-full h-16 p-3 rounded-xl border border-black/10 text-[12px] font-medium bg-white resize-none outline-none focus:border-[#C6A15A]"></textarea></div>
+              <div><label class="block text-[10px] font-bold tracking-widest uppercase text-black/50 mb-1">Payment Method</label><div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setPayment('payAtHotel')" id="pay-payAtHotel" class="pay-btn h-10 rounded-xl border-2 border-[#0A1E3C] bg-[#0A1E3C] text-white text-[11px] font-bold">Pay at Hotel</button>
+                <button type="button" onclick="setPayment('momo')" id="pay-momo" class="pay-btn h-10 rounded-xl border border-black/10 bg-white text-[11px] font-bold">MTN MoMo</button>
+                <button type="button" onclick="setPayment('card')" id="pay-card" class="pay-btn h-10 rounded-xl border border-black/10 bg-white text-[11px] font-bold">Card</button>
+              </div></div>
+            </div>
+            <div class="bg-white rounded-2xl border border-black/10 p-4 space-y-2.5">
+              <div class="flex justify-between text-[12px]"><span class="text-black/60">${nights} night${nights>1?'s':''} × UGX ${selectedRoom.price.toLocaleString()}</span><span class="font-bold">UGX ${(selectedRoom.price*nights).toLocaleString()}</span></div>
+              <div id="extras-breakdown" class="space-y-1 text-[12px]"></div>
+              <div class="flex justify-between text-[12px] text-emerald-700"><span>Direct booking discount (15%)</span><span class="font-bold">- UGX ${Math.round(selectedRoom.price*nights*0.15).toLocaleString()}</span></div>
+              <div class="h-px bg-black/10"></div>
+              <div class="flex justify-between font-black text-[15px]"><span>Total</span><span id="total-price" class="text-[#0A1E3C]">UGX 0</span></div>
+              <div class="text-[10px] text-black/40">Includes taxes • No hidden fees • Best rate direct</div>
+            </div>
+            <button onclick="submitRoomBooking()" class="w-full h-12 rounded-xl bg-[#128C7E] text-white font-bold text-[13.5px] hover:bg-[#075E54] flex items-center justify-center gap-2 shadow-lg"><i data-lucide="message-circle" class="w-4 h-4"></i> Confirm on WhatsApp</button>
+            <button onclick="callHotel()" class="w-full h-11 rounded-xl bg-white border border-black/10 font-bold text-[13px] flex items-center justify-center gap-2 hover:bg-black/5"><i data-lucide="phone" class="w-4 h-4 text-[#C6A15A]"></i> Call Hotel: 0761 422 899</button>
+            <div class="flex items-center justify-center gap-2 text-[10px] text-black/40"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Secure • Instant confirmation • 24/7 support</div>
+          </div>
+        </div>
+      `;
+      document.getElementById("booking-modal").classList.remove("hidden");
+      setTimeout(()=>{ document.getElementById("booking-sheet").classList.remove("sheet-enter"); document.getElementById("booking-sheet").classList.add("sheet-active"); },10);
+      updateTotalPrice(); lucide.createIcons(); haptic();
+    }
+    function closeBookingModal(){ const sheet=document.getElementById("booking-sheet"); sheet.classList.add("sheet-enter"); sheet.classList.remove("sheet-active"); setTimeout(()=>{ document.getElementById("booking-modal").classList.add("hidden"); },300); }
+    function setGallery(i){ currentGalleryIndex=i; const img=document.getElementById("gallery-main-img"); img.src=selectedRoom.gallery[i]; document.querySelectorAll(".gallery-thumb").forEach((el,idx)=>{ el.className=`gallery-thumb shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 ${idx===i?'border-[#0A1E3C]':'border-transparent'}`; }); document.querySelectorAll(".gallery-dot").forEach((d,idx)=>{ d.className=`gallery-dot w-1.5 h-1.5 rounded-full ${idx===i?'bg-white w-5':'bg-white/50'} transition-all`; }); haptic(); }
+    function nextGallery(){ setGallery((currentGalleryIndex+1)%selectedRoom.gallery.length); }
+    function prevGallery(){ setGallery((currentGalleryIndex-1+selectedRoom.gallery.length)%selectedRoom.gallery.length); }
+    function toggleExtra(key){ extras[key]=!extras[key]; openBookingModal(selectedRoom.id); }
+    let selectedPayment='payAtHotel';
+    function setPayment(p){ selectedPayment=p; document.querySelectorAll('.pay-btn').forEach(b=>{ b.className='pay-btn h-10 rounded-xl border border-black/10 bg-white text-[11px] font-bold'; }); const active=document.getElementById(`pay-${p}`); if(active){ active.className='pay-btn h-10 rounded-xl border-2 border-[#0A1E3C] bg-[#0A1E3C] text-white text-[11px] font-bold'; } haptic(); }
+    function updateTotalPrice(){ if(!selectedRoom) return; const nights=updateNights(); let total=selectedRoom.price*nights; const breakdown=document.getElementById("extras-breakdown"); let html=''; if(extras.lateCheckout){ total+=20000; html+=`<div class="flex justify-between"><span>Late checkout</span><span>UGX 20,000</span></div>`; } if(extras.airportPickup){ total+=50000; html+=`<div class="flex justify-between"><span>Airport pickup</span><span>UGX 50,000</span></div>`; } if(breakdown) breakdown.innerHTML=html; const discount=Math.round(selectedRoom.price*nights*0.15); const finalTotal=total-discount; const el=document.getElementById("total-price"); if(el) el.innerText=`UGX ${finalTotal.toLocaleString()}`; }
+    function callHotel(){ window.location.href='tel:+256761422899'; }
+    function submitRoomBooking(){
+      const name=document.getElementById("modal-guest-name").value.trim(); const phone=document.getElementById("modal-guest-phone").value.trim(); const requests=document.getElementById("modal-guest-requests").value.trim();
+      const ci=document.getElementById("modal-check-in")?.value || document.getElementById("check-in-date").value;
+      const co=document.getElementById("modal-check-out")?.value || document.getElementById("check-out-date").value;
+      if(!name){ triggerToast("Please enter your full name"); return; } if(!phone){ triggerToast("Please enter phone number"); return; }
+      const nights=Math.round((new Date(co)-new Date(ci))/(1000*60*60*24))||1;
+      const extrasList=[]; if(extras.lateCheckout) extrasList.push("Late Checkout (+UGX 20k)"); if(extras.airportPickup) extrasList.push("Airport Pickup (+UGX 50k)");
+      const total=document.getElementById("total-price")?.innerText||`UGX ${(selectedRoom.price*nights).toLocaleString()}`;
+      const text=`Hello Mbarara Grand Holiday Hotel 👋\n\n*NEW NATIVE APP BOOKING*\n\n🏨 Suite: ${selectedRoom.name} (${selectedRoom.tag})\n📅 Check-In: ${ci}\n📅 Check-Out: ${co} (${nights} night${nights>1?'s':''})\n👥 Guests: ${guestCount.adults} Adults, ${guestCount.children} Children • ${roomCount} Room(s)\n👤 Name: ${name}\n📞 Phone: ${phone}\n💳 Payment: ${selectedPayment}\n${extrasList.length?`✨ Extras: ${extrasList.join(', ')}\n`:''}📝 Requests: ${requests||'None'}\n\n💰 Total Estimate: ${total}\n📍 Source: Native App • Best Rate Direct\n\nPlease confirm availability. Thank you!`;
+      window.open(`https://wa.me/256789462495?text=${encodeURIComponent(text)}`,"_blank"); closeBookingModal(); triggerToast("Opening WhatsApp with booking details ✨");
+    }
+
+    // SERVICE MODAL (Bar, Restaurant, Spa, etc) - Rich content
+    function openServiceModal(serviceId){
+      const svc = SERVICES_DATA[serviceId] || HOTEL_SECTIONS.find(s=>s.id===serviceId);
+      const data = SERVICES_DATA[serviceId];
+      if(!data && !svc) return;
+      const content=document.getElementById("service-modal-content");
+      const title = data?.title || svc.title;
+      const imgs = data?.images || [svc?.img];
+      const desc = data?.description || svc?.desc;
+      let bodyHtml='';
+      if(serviceId==='restaurant'){
+        bodyHtml=`<div class="space-y-3"><h4 class="font-bold text-[13px]">Today's Menu Highlights</h4>${data.menu.map(m=>`<div class="flex justify-between items-start p-3 rounded-xl bg-[#FFFBF2] border border-[#E9DFC7]"><div><div class="font-bold text-[13px]">${m.name}</div><div class="text-[11px] text-black/50">${m.desc}</div></div><div class="text-[12px] font-bold text-[#C6A15A]">${m.price}</div></div>`).join('')}<div class="p-3 rounded-xl bg-[#0A1E3C] text-white text-[12px] flex gap-2"><i data-lucide="clock" class="w-4 h-4 text-[#D4AF37]"></i> Open ${data.hours} • Organic breakfast included for guests</div></div>`;
+      } else if(serviceId==='spa'){
+        bodyHtml=`<div class="space-y-3"><h4 class="font-bold text-[13px]">Treatment Menu</h4>${data.treatments.map(t=>`<div class="flex justify-between items-center p-3 rounded-xl bg-white border border-black/10"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-[#FFFBF2] border border-[#E9DFC7] flex items-center justify-center">💆‍♀️</div><div><div class="font-bold text-[13px]">${t.name}</div><div class="text-[11px] text-black/50">${t.duration}</div></div></div><div class="font-bold text-[13px] text-[#C6A15A]">${t.price}</div></div>`).join('')}<button onclick="requestSpaBooking()" class="w-full h-11 rounded-xl bg-[#0A1E3C] text-white font-bold text-[13px]">Book Spa on WhatsApp</button></div>`;
+      } else if(serviceId==='bar'){
+        bodyHtml=`<div class="space-y-3"><h4 class="font-bold text-[13px]">Signature Drinks</h4>${data.drinks.map(d=>`<div class="flex justify-between p-3 rounded-xl bg-white border border-black/10"><span class="font-medium text-[13px]">${d.name}</span><span class="font-bold text-[13px] text-[#C6A15A]">${d.price}</span></div>`).join('')}<div class="rounded-xl bg-gradient-to-br from-[#D4AF37]/20 to-[#C6A15A]/10 border border-[#D4AF37]/30 p-4"><div class="font-bold text-[13px]">Terrace Sunset • Happy Hour 5-7 PM</div><div class="text-[11px] text-black/60 mt-1">Live acoustic Fridays, premium spirits, Ankole coffee cocktails.</div></div></div>`;
+      } else if(serviceId==='pool'){
+        bodyHtml=`<div class="space-y-3"><div class="grid grid-cols-2 gap-2">${data.features.map(f=>`<div class="p-3 rounded-xl bg-[#FFFBF2] border border-[#E9DFC7] text-[11px] font-semibold flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-600"></i>${f}</div>`).join('')}</div><div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-[12px] font-bold text-emerald-800">${data.price}</div></div>`;
+      } else if(serviceId==='conference'){
+        bodyHtml=`<div class="space-y-3">${data.halls.map(h=>`<div class="flex justify-between items-center p-3 rounded-xl bg-white border border-black/10"><div><div class="font-bold text-[13px]">${h.name}</div><div class="text-[11px] text-black/50">${h.cap}</div></div><div class="font-bold text-[12px] text-[#C6A15A]">${h.price}</div></div>`).join('')}<button onclick="switchTab('planner');closeServiceModal();" class="w-full h-11 rounded-xl bg-[#0A1E3C] text-white font-bold text-[13px]">Plan in Event Planner</button></div>`;
+      } else if(serviceId==='gardens'){
+        bodyHtml=`<div class="space-y-3"><div class="flex flex-wrap gap-2">${data.packages.map(p=>`<span class="px-3 py-1.5 rounded-full bg-white border border-black/10 text-[11px] font-medium">${p}</span>`).join('')}</div><div class="p-4 rounded-xl bg-[#0A1E3C] text-white"><div class="font-bold text-[13px] text-[#D4AF37]">Gardens for 300 Guests</div><div class="text-[11px] text-white/60 mt-1">Fairy lights, floral arches, PA system & catering.</div></div><button onclick="switchTab('planner');closeServiceModal();" class="w-full h-11 rounded-xl bg-[#128C7E] text-white font-bold text-[13px]">Request Quote on WhatsApp</button></div>`;
+      }
+      content.innerHTML=`
+        <div class="relative h-[38vh] md:h-[360px] bg-black overflow-hidden">
+          <img src="${imgs[0]}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute top-4 left-4 right-4 flex justify-between"><span class="px-3 h-7 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold uppercase">${serviceId}</span><button onclick="closeServiceModal()" class="w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+          <div class="absolute bottom-0 left-0 right-0 p-5"><h2 class="font-serif text-[24px] md:text-[28px] font-bold text-white leading-tight">${title}</h2><p class="text-[13px] text-white/75 mt-1 max-w-lg">${desc}</p></div>
+        </div>
+        ${imgs.length>1?`<div class="px-4 py-3 flex gap-2 overflow-x-auto no-scrollbar border-b border-black/5">${imgs.map(im=>`<img src="${im}" class="w-20 h-20 rounded-xl object-cover shrink-0 border border-black/10" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'"/>`).join('')}</div>`:''}
+        <div class="p-5 md:p-6 space-y-4">${bodyHtml}<div class="pt-2 flex gap-2"><a href="https://wa.me/256761422899?text=Hello%20I%20want%20to%20inquire%20about%20${encodeURIComponent(title)}" target="_blank" class="flex-1 h-11 rounded-xl bg-[#128C7E] text-white font-bold text-[13px] flex items-center justify-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Inquiry</a><button onclick="closeServiceModal()" class="h-11 px-5 rounded-xl bg-white border border-black/10 font-bold text-[13px]">Close</button></div></div>
+      `;
+      document.getElementById("service-modal").classList.remove("hidden");
+      setTimeout(()=>{ document.getElementById("service-sheet").classList.remove("sheet-enter"); document.getElementById("service-sheet").classList.add("sheet-active"); },10);
+      lucide.createIcons(); haptic();
+    }
+    function closeServiceModal(){ const sheet=document.getElementById("service-sheet"); sheet.classList.add("sheet-enter"); sheet.classList.remove("sheet-active"); setTimeout(()=>{ document.getElementById("service-modal").classList.add("hidden"); },300); }
+    function requestSpaBooking(){ const text=`Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to book a spa treatment:\nPlease share today's availability and prices.`; window.open(`https://wa.me/256761422899?text=${encodeURIComponent(text)}`,"_blank"); }
+
+    // PLANNER (kept logic)
+    function setEventPlanner(type){
+      activePlanner=type;
+      ["graduation","birthday","retreat"].forEach(p=>{ const btn=document.getElementById(`plan-btn-${p}`); if(!btn) return; if(p===type){ btn.className="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all bg-[#0A1E3C] text-white shadow-sm"; } else { btn.className="flex-1 h-10 rounded-full text-xs font-bold tracking-wide transition-all text-[#0A1E3C]/70 hover:bg-black/5"; } });
+      const slider=document.getElementById("planner-guests-slider");
+      if(type==="graduation"){ document.getElementById("planner-title").innerText="Plan Your Graduation Ceremony Party"; slider.max="300"; plannerGuests=100; plannerBudget=6000000; }
+      else if(type==="birthday"){ document.getElementById("planner-title").innerText="Plan Your Custom Poolside Birthday Party"; slider.max="150"; plannerGuests=60; plannerBudget=3500000; }
+      else { document.getElementById("planner-title").innerText="Plan Your Corporate Retreat / Seminar"; slider.max="200"; plannerGuests=40; plannerBudget=7500000; }
+      slider.value=plannerGuests; document.getElementById("guest-count-badge").innerText=`${plannerGuests} Guests`; document.getElementById("planner-budget-input").value=plannerBudget;
+      renderPlannerServices(); calculatePlannerTotal(); haptic();
+    }
+    function renderPlannerServices(){
+      const container=document.getElementById("planner-services-container"); if(!container) return; container.innerHTML="";
+      const services=SERVICES_PRICING[activePlanner]; const selected=selectedServices[activePlanner];
+      services.forEach(svc=>{
+        const isChecked=selected.includes(svc.id);
+        const button=document.createElement("button"); button.type="button"; button.onclick=()=>togglePlannerService(svc.id);
+        button.className=`flex items-center text-left gap-3 p-3.5 rounded-2xl border transition-all ${isChecked?"bg-[#0A1E3C]/5 border-[#0A1E3C] shadow-sm":"bg-white border-black/10 hover:border-black/25"}`;
+        button.innerHTML=`<span class="text-xl shrink-0">${svc.icon}</span><div class="flex-1 min-w-0"><div class="text-[12.5px] font-bold truncate text-[#0A1E3C]">${svc.name}</div><div class="text-[11px] text-black/45">UGX ${svc.price.toLocaleString()}${svc.perGuest?' / guest':''}</div></div><span class="w-5 h-5 rounded-full border-2 shrink-0 flex items-center justify-center text-[10px] ${isChecked?'bg-[#0A1E3C] border-[#0A1E3C] text-white':'border-black/25 bg-white'}">${isChecked?'✓':''}</span>`;
+        container.appendChild(button);
+      });
+    }
+    function togglePlannerService(svcId){ let list=selectedServices[activePlanner]; if(list.includes(svcId)){ list=list.filter(id=>id!==svcId); } else { list.push(svcId); } selectedServices[activePlanner]=list; renderPlannerServices(); calculatePlannerTotal(); haptic(); }
+    function updateGuestsVal(val){ plannerGuests=parseInt(val); document.getElementById("guest-count-badge").innerText=`${plannerGuests} Guests`; calculatePlannerTotal(); }
+    function updateBudgetVal(val){ plannerBudget=parseInt(val)||0; calculatePlannerTotal(); }
+    function calculatePlannerTotal(){
+      const services=SERVICES_PRICING[activePlanner]; const selected=selectedServices[activePlanner]; let total=0;
+      const listContainer=document.getElementById("planner-breakdown-list"); if(!listContainer) return; listContainer.innerHTML="";
+      services.forEach(svc=>{ if(selected.includes(svc.id)){ const cost=svc.perGuest?svc.price*plannerGuests:svc.price; total+=cost; const row=document.createElement("div"); row.className="flex justify-between items-center text-[12px] text-white/70"; row.innerHTML=`<span>${svc.icon} ${svc.name}</span><span class="font-bold text-white">UGX ${cost.toLocaleString()}</span>`; listContainer.appendChild(row); } });
+      document.getElementById("estimated-total").innerText=`UGX ${total.toLocaleString()}`; document.getElementById("estimated-total-details").innerText=`Based on ${plannerGuests} Guests`;
+      const alertContainer=document.getElementById("budget-alert-banner"); const isSufficient=plannerBudget>=total;
+      if(isSufficient){ alertContainer.className="p-4 rounded-2xl border flex items-start gap-3 text-[12.5px] bg-emerald-500/10 border-emerald-500/30 text-emerald-100"; alertContainer.innerHTML=`<div class="font-bold">✓ Budget Sufficient</div><div class="text-[11.5px] opacity-75 ml-2">Covers estimate safely • Native booking available</div>`; }
+      else { alertContainer.className="p-4 rounded-2xl border flex items-start gap-3 text-[12.5px] bg-red-500/10 border-red-500/30 text-red-100"; alertContainer.innerHTML=`<div class="font-bold">⚠ Over Budget</div><div class="text-[11.5px] opacity-75 ml-2">Short by UGX ${(total-plannerBudget).toLocaleString()}</div>`; }
+    }
+    function sendEventQuoteToWhatsApp(){
+      const servicesList=SERVICES_PRICING[activePlanner].filter(s=>selectedServices[activePlanner].includes(s.id)).map(s=>s.name);
+      const text=`Hello Mbarara Grand Holiday Hotel 👋\n\nI would like to request an official event quotation:\n\n⭐ Event Type: ${activePlanner.toUpperCase()}\n📅 Date: ${document.getElementById('event-date').value}\n👥 Guests: ${plannerGuests}\n💰 Budget: UGX ${plannerBudget.toLocaleString()}\n💸 Est: ${document.getElementById('estimated-total').innerText}\n\n🛠 Services:\n${servicesList.map(s=>` - ${s}`).join('\n')}\n\nSource: Native App`;
+      window.open(`https://wa.me/256776506052?text=${encodeURIComponent(text)}`,"_blank");
+    }
+  </script>
+</body>
+</html>
