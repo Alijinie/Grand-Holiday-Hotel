@@ -657,7 +657,7 @@
         <div class="relative h-[38vh] md:h-[360px] bg-black overflow-hidden">
           <img src="${imgs[0]}" class="w-full h-full object-cover" alt="${title}"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-          <div class="absolute top-4 left-4 right-4 flex justify-between"><span class="px-3 h-7 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold uppercase">${serviceId}</span><button onclick="closeServiceModal()" class="w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+          <div class="absolute top-4 left-4 right-4 flex justify-between"><button onclick="closeServiceModal()" class="w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button></div>
           <div class="absolute bottom-0 left-0 right-0 p-5"><h2 class="font-serif text-[24px] md:text-[28px] font-bold text-white leading-tight">${title}</h2><p class="text-[13px] text-white/75 mt-1 max-w-lg">${desc}</p></div>
         </div>
         <div class="px-4 py-3 flex gap-2 overflow-x-auto no-scrollbar border-b border-black/5">${imgs.map(im=>`<img src="${im}" class="w-20 h-20 rounded-xl object-cover shrink-0 border border-black/10" alt="gallery"/>`).join('')}</div>
