@@ -122,6 +122,10 @@
     .m3-fab { box-shadow: 0 4px 12px rgba(18,140,126,0.35), 0 1px 3px rgba(18,140,126,0.3); transition: all 0.25s cubic-bezier(0.32,0.72,0,1); }
     .m3-fab:active { transform: scale(0.92) translateY(1px); box-shadow: 0 2px 6px rgba(18,140,126,0.3); }
     
+    .bg-brand [data-lucide].text-accent,
+    .m3-drawer-item.active [data-lucide].text-accent,
+    .bottom-nav-btn:not(.bg-white) [data-lucide].text-accent { color: #8AD2FF; }
+    
     /* Edge-to-edge premium feel */
     @supports (padding: max(0px)) {
       .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
