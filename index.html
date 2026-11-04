@@ -133,6 +133,21 @@
     /* Ripple effect for premium touch */
     @keyframes ripple { to { transform: scale(4); opacity: 0; } }
     .ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: 0.12; transform: scale(0); animation: ripple 0.6s linear; pointer-events: none; }
+
+    /* Tab-bottom continuous gallery marquee */
+    @keyframes tab-carousel-scroll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+    .tab-carousel-track { display: flex; width: max-content; animation: tab-carousel-scroll var(--carousel-duration, 40s) linear infinite; will-change: transform; }
+    .tab-carousel-card { margin-right: 12px; scroll-snap-align: start; }
+    @media (min-width: 640px) { .tab-carousel-card { margin-right: 16px; } }
+    .tab-carousel-viewport { scroll-snap-type: x proximity; }
+    .tab-carousel-viewport:hover .tab-carousel-track,
+    .tab-carousel-viewport:focus-within .tab-carousel-track,
+    .tab-carousel-viewport.is-paused .tab-carousel-track { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) {
+      .tab-carousel-track { animation: none !important; transform: none !important; }
+      .tab-carousel-viewport { overflow-x: auto !important; overflow-y: hidden; }
+      .tab-carousel-duplicate, [data-carousel-toggle] { display: none !important; }
+    }
     
     /* Top app bar elevation on scroll */
     @media (max-width: 768px) {
@@ -815,6 +830,17 @@
       { id: "gardens", title: "Gardens & Events", subtitle: "Celebrations", img: "cf2.webp", badge: "Quote on Request", desc: "Weddings, graduations and birthdays are quoted after we confirm your requirements.", cta: "Plan Event" }
     ];
 
+    const TAB_CAROUSEL_IMAGES = [
+      "15.png",
+      "16.png",
+      "17.png",
+      "14.png",
+      "cf3.webp",
+      "spa2.avif",
+      "cfr4.jpg",
+      "cf2.webp"
+    ];
+
     const SERVICES_DATA = {
       restaurant: {
         title: "Grand Restaurant",
@@ -1099,7 +1125,7 @@
           field.addEventListener("change", clear);
         });
       }
-      renderRooms(); renderBanners(); renderMenuCategories(); renderMenu(); setEventType("Wedding"); updateMenuOrder();
+      renderRooms(); renderBanners(); renderTabCarousels(); renderMenuCategories(); renderMenu(); setEventType("Wedding"); updateMenuOrder();
       updateOccupancy();
       document.getElementById("check-in-date").addEventListener('change', onPageDateChange);
       document.getElementById("check-out-date").addEventListener('change', onPageDateChange);
@@ -1278,6 +1304,55 @@
         const idx = Math.round(cont.scrollLeft / (cont.firstChild?.offsetWidth + 16 || 1));
         dots.innerHTML = HOTEL_SECTIONS.map((_,i)=>`<div class="w-1.5 h-1.5 rounded-full ${i===idx?'bg-brand w-5':'bg-black/20'} transition-all"></div>`).join('');
       });
+    }
+    function renderTabCarousels(){
+      if(!TAB_CAROUSEL_IMAGES.length) return;
+      const repeats = Math.max(1, Math.ceil(8 / TAB_CAROUSEL_IMAGES.length));
+      const sequence = Array.from({length: repeats}, () => TAB_CAROUSEL_IMAGES).flat();
+      const buildCards = duplicate => sequence.map((src, i) => {
+        const alt = duplicate ? "" : `Grand Holiday gallery image ${i + 1}`;
+        return `<figure class="tab-carousel-card shrink-0 w-[170px] sm:w-[210px] md:w-[250px] lg:w-[290px] ${duplicate ? "tab-carousel-duplicate" : ""}" ${duplicate ? 'aria-hidden="true"' : ""}><img src="${src}" alt="${alt}" loading="lazy" decoding="async" class="w-full aspect-[3/2] object-cover rounded-2xl border border-black/5 shadow-sm"/></figure>`;
+      }).join("");
+      const cards = `${buildCards(false)}${buildCards(true)}`;
+      document.querySelectorAll(".tab-content").forEach(tab => {
+        if(tab.querySelector(".tab-carousel")) return;
+        const section = document.createElement("section");
+        section.className = "tab-carousel no-print border-t border-line/70 bg-white/60 mt-2 -mb-28 md:mb-0";
+        section.setAttribute("aria-label", "Hotel gallery");
+        section.innerHTML = `
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-10">
+            <div class="flex items-end justify-between gap-3 mb-4">
+              <div>
+                <div class="text-[10px] uppercase tracking-widest font-bold text-accent">Gallery</div>
+                <h3 class="font-serif text-[22px] sm:text-[26px] font-bold leading-tight">Moments at Grand Holiday</h3>
+              </div>
+              <button type="button" data-carousel-toggle aria-pressed="false" aria-label="Pause gallery animation" class="h-9 px-3 rounded-full bg-white border border-black/10 text-[11px] font-bold text-brand flex items-center gap-1.5 hover:bg-mist shrink-0">
+                <i data-lucide="pause" class="carousel-pause-icon w-3.5 h-3.5 text-accent"></i>
+                <i data-lucide="play" class="carousel-play-icon w-3.5 h-3.5 text-accent hidden"></i>
+                <span class="carousel-toggle-label">Pause</span>
+              </button>
+            </div>
+            <div class="tab-carousel-viewport relative overflow-hidden -mx-4 sm:mx-0">
+              <div class="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-mist to-transparent z-10"></div>
+              <div class="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-mist to-transparent z-10"></div>
+              <div class="tab-carousel-track" style="--carousel-duration:${Math.max(24, sequence.length * 4)}s">${cards}</div>
+            </div>
+          </div>`;
+        const toggle = section.querySelector("[data-carousel-toggle]");
+        const viewport = section.querySelector(".tab-carousel-viewport");
+        toggle?.addEventListener("click", () => {
+          const paused = viewport.classList.toggle("is-paused");
+          toggle.setAttribute("aria-pressed", String(paused));
+          toggle.setAttribute("aria-label", paused ? "Resume gallery animation" : "Pause gallery animation");
+          toggle.querySelector(".carousel-pause-icon")?.classList.toggle("hidden", paused);
+          toggle.querySelector(".carousel-play-icon")?.classList.toggle("hidden", !paused);
+          const label = toggle.querySelector(".carousel-toggle-label");
+          if(label) label.innerText = paused ? "Play" : "Pause";
+          haptic();
+        });
+        tab.appendChild(section);
+      });
+      lucide.createIcons();
     }
     function scrollBanners(dir){ const cont=document.getElementById("experience-slider"); cont.scrollBy({left: dir*400, behavior:'smooth'}); haptic(); }
 
