@@ -327,12 +327,15 @@
 
     <div id="tab-home" class="tab-content">
       <section class="relative overflow-hidden bg-brand-deep text-white">
-        <div class="absolute inset-0">
-  <img src="front4.jpg" class="w-full h-full object-cover" alt="Hotel hero"/>
-  <!-- Mobile: even scrim so full-width text stays readable -->
+     <div class="absolute inset-0">
+  <picture class="block w-full h-full">
+    <source media="(min-width: 1024px)" srcset="front4.jpg">
+    <img src="front.jpg" class="w-full h-full object-cover" alt="Hotel hero" fetchpriority="high" decoding="async"/>
+  </picture>
+
+  <!-- Mobile: even scrim so full-width text stays readable (remove if you want no tint) -->
   <div class="absolute inset-0 bg-brand-deep/45 lg:hidden"></div>
-  <!-- Desktop: dark only behind the text, clear on the right -->
-  
+
   <!-- Soft fade at the bottom edge only -->
   <div class="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-brand-deep/35 to-transparent"></div>
 </div>
