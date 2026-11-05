@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hospitality Services | Developer fees remain unpaid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for a cleaner sans-serif look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7; /* Soft off-white matching the mockup */
+        }
+        
+        /* Neo-brutalist button shadow utility */
+        .btn-shadow {
+            box-shadow: 3px 4px 0px 0px #1a1a1a;
+        }
+        
+        .btn-shadow:active {
+            box-shadow: 0px 0px 0px 0px #1a1a1a;
+            transform: translateY(3px) translateX(3px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between text-gray-800 p-4 md:p-8">
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-4xl flex-grow flex flex-col items-center justify-center space-y-10 mt-8 mb-12">
+        
+        <!-- GIF / Image Container -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-2xl flex justify-center items-center relative overflow-hidden">
+            <!-- Using the specified GIF verbatim -->
+            <img src="original-8a40d2c832bfa04e345e3b2454002a3c (1).gif" alt="Offline Router Animation" class="max-w-full h-auto object-contain md:h-64">
+        </div>
+
+        <!-- Typography Section -->
+        <div class="text-center space-y-3 px-4">
+            <h1 class="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Grand Hospitality/ Grand Holiday Hotel</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">You are seeing this because Developer Fees Remain Unpaid.</p>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
+            
+            <!-- Card 1: Site Owner -->
+            <div class="bg-[#FDFBF7] rounded-xl p-6 shadow-sm border border-gray-200 flex flex-col h-full justify-between gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="bg-orange-100 p-2.5 rounded-full flex-shrink-0 border border-orange-200">
+                        <!-- Briefcase Icon -->
+                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm text-gray-800 leading-relaxed font-medium mt-1">
+                        If you are the site owner, click below to check your DNS settings with your domain provider.
+                    </p>
+                </div>
+                <button class="w-full bg-[#f48c26] hover:bg-[#e07d1e] text-black border-2 border-[#1a1a1a] rounded-lg py-2.5 font-semibold transition-all btn-shadow">
+                    View Hosting Guide
+                </button>
+            </div>
+
+            <!-- Card 2: Visitor -->
+            <div class="bg-[#FDFBF7] rounded-xl p-6 shadow-sm border border-gray-200 flex flex-col h-full justify-between gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="bg-orange-100 p-2.5 rounded-full flex-shrink-0 border border-orange-200">
+                        <!-- Envelope Icon -->
+                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm text-gray-800 leading-relaxed font-medium mt-1">
+                        Not the owner? If you believe this is an error, please let us know.
+                    </p>
+                </div>
+                <button class="w-full bg-[#FDFBF7] hover:bg-white text-gray-900 border-2 border-[#1a1a1a] rounded-lg py-2.5 font-semibold transition-all btn-shadow">
+                    Contact Developer
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Dynamic Timestamp -->
+        <div class="text-sm text-gray-600 font-medium pt-2">
+            Last checked: <span id="timestamp"></span> (Auto-refreshing in <span id="countdown">5:00</span>).
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 pt-8 border-t border-gray-200 gap-4">
+        <div class="flex-1 hidden md:block"></div>
+        <div class="flex-1 text-center font-medium">
+            Powered by <a href="#" class="underline hover:text-gray-800 transition-colors">Platform Status Pages</a>
+        </div>
+        <div class="flex-1 text-center md:text-right font-medium">
+            <a href="#" class="hover:text-gray-800 underline transition-colors">Help Center</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Set Current Timestamp ---
+            const updateTimestamp = () => {
+                const now = new Date();
+                const options = { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    second: '2-digit'
+                };
+                // Adding arbitrary Timezone text matching common status pages
+                document.getElementById('timestamp').textContent = now.toLocaleDateString('en-US', options) + ' GMT';
+            };
+            
+            updateTimestamp();
+
+            // --- 2. Auto-Refresh Logic (5 Minutes) ---
+            let totalSeconds = 5 * 60; // 300 seconds
+            const countdownEl = document.getElementById('countdown');
+
+            const updateCountdown = setInterval(() => {
+                totalSeconds--;
+                
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                
+                // Format the timer output string smoothly (e.g. 4:09)
+                countdownEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+                // When reaching 0, reload the page cleanly
+                if (totalSeconds <= 0) {
+                    clearInterval(updateCountdown);
+                    countdownEl.textContent = "0:00";
+                    window.location.reload();
+                }
+            }, 1000); // Ticks every 1000ms (1 second)
+        });
+    </script>
+</body>
+</html>
