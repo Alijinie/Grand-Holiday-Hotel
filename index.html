@@ -824,14 +824,14 @@
       { id: "single", name: "Single Room", price: 40000, tag: "Single", guests: 1, beds: 1, baths: 1, size: "Solo comfort", img: "single.jpg", gallery: ["single2.jpg","singlebath1.jpg"], facilities: ["Breakfast Included", "Private Bathroom", "Room Service", "Single Bed", "Free WiFi"], desc: "A comfortable single room for solo travellers. Breakfast is included in the published rate." },
       { id: "double", name: "Double Room", price: 70000, tag: "Double", guests: 2, beds: 1, baths: 1, size: "Couples", img: "double.jpg", gallery: ["double2.jpg","double.jpg"], facilities: ["Breakfast for 2 Guests", "Private Bathroom", "Room Service", "Double Bed", "TV+WiFi"], desc: "A comfortable double room for two guests. Breakfast for two is included in the published rate." },
       { id: "twin", name: "Twin Room", price: 60000, tag: "Twin", guests: 2, beds: 2, baths: 1, size: "Two beds", img: "twin11.webp", gallery: ["twin22.webp","twin11.webp"], facilities: ["Breakfast for 2 Guests", "Twin Beds", "Private Bathroom", "Room Service", "Free WiFi"], desc: "A twin room for friends or colleagues. Breakfast for two is included in the published rate." },
-      { id: "grand", name: "Twin Double", price: 150000, tag: "Grand", guests: 2, beds: 2, baths: 1, size: "Signature stay", img: "17.png", gallery: ["17.png","16.png"], facilities: ["Breakfast Included", "Private Bathroom", "Room Service", "Premium Room", "TV+WiFi"], desc: "The signature Grand room,2 large double beds with breakfast included in the published rate." }
+      { id: "grand", name: "Executive Double", price: 150000, tag: "Grand", guests: 2, beds: 2, baths: 1, size: "Signature stay", img: "17.png", gallery: ["17.png","16.png"], facilities: ["Breakfast Included", "Private Bathroom", "Room Service", "Premium Room", "TV+WiFi"], desc: "VIP signature Grand room,2 large double beds with breakfast included in the published rate." }
     ];
 
     const HOTEL_SECTIONS = [
       { id: "restaurant", title: "Grand Restaurant", subtitle: "Full Menu", img: "cf3.webp", badge: "Full Menu", desc: "Breakfast, local favourites, pizzas, grills, drinks and more. See the full menu with prices.", cta: "View Menu" },
       { id: "spa", title: "Spa & Wellness", subtitle: "Relax & Unwind", img: "spa2.avif", badge: "Ask for Details", desc: "Ask our team about sauna and massage availability, treatments and current prices.", cta: "Inquire" },
-      { id: "bar", title: "Lounge & Terrace", subtitle: "Drinks & Views", img: "15.png", badge: "Ask for Details", desc: "Ask about the bar selection, opening times and current prices.", cta: "Inquire" },
-      { id: "pool", title: "DSTV & Leisure", subtitle: "Unwind", img: "15.png", badge: "Guest Leisure", desc: "Ask the team about DSTV, pool table and leisure access during your stay.", cta: "Ask Us" },
+      { id: "bar", title: "Lounge & Terrace", subtitle: "Drinks & Views", img: "bar4.jpg", badge: "Ask for Details", desc: "Ask about the bar selection, opening times and current prices.", cta: "Inquire" },
+      { id: "pool", title: "DSTV & Leisure", subtitle: "Unwind", img: "bar3.jpg", badge: "Guest Leisure", desc: "Ask the team about DSTV, pool table and leisure access during your stay.", cta: "Ask Us" },
       { id: "conference", title: "Conference Packages", subtitle: "Meetings & Seminars", img: "cfr4.jpg", badge: "From UGX 150,000", desc: "Venue only is UGX 150,000. The all-services-included package is UGX 400,000.", cta: "See Packages" },
       { id: "gardens", title: "Gardens & Events", subtitle: "Celebrations", img: "cf2.webp", badge: "Quote on Request", desc: "Weddings, graduations and birthdays are quoted after we confirm your requirements.", cta: "Plan Event" }
     ];
@@ -850,7 +850,9 @@
       "spa2.avif",
       "cfr4.jpg",
       "cf2.webp",
-      "twin11.webp"
+      "twin11.webp",
+      "bar4.jpg",
+      "bar3.jpg",
     ];
 
     const SERVICES_DATA = {
@@ -885,7 +887,7 @@
       },
       bar: {
         title: "Lounge Bar & Terrace",
-        images: ["15.png"],
+        images: ["bar2.jpg","bar3.jpg"],
         description: "Ask about the bar selection, opening times and current prices.",
         drinks: [{name:"Beer selection", price:"Ask us"}, {name:"Soft drinks", price:"Ask us"}, {name:"Spirits & shooters", price:"Ask us"}],
         hours: "Ask us",
@@ -899,7 +901,7 @@
       },
       pool: {
         title: "DSTV & Leisure",
-        images: ["cf3.webp","15.png"],
+        images: ["bar3.jpg","bar4.jpg"],
         description: "Ask the team about DSTV, pool table and leisure access during your stay.",
         features: ["DSTV","Pool Table","Guest Leisure","Ask for details","Payments at reception"],
         price: "Access and pricing on request.",
