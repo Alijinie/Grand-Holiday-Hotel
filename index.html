@@ -164,6 +164,26 @@
     .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
     .img-zoom { transition: transform 0.7s cubic-bezier(0.2,0,0,1); }
     .group:hover .img-zoom { transform: scale(1.08); }
+
+    /* Image loading spinners */
+    :root {
+      --img-spinner: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2050%2050'%3E%3Ccircle%20cx='25'%20cy='25'%20r='22'%20fill='%23fff'%20fill-opacity='.92'/%3E%3Ccircle%20cx='25'%20cy='25'%20r='17'%20fill='none'%20stroke='%23D3E6FA'%20stroke-width='5'/%3E%3Ccircle%20cx='25'%20cy='25'%20r='17'%20fill='none'%20stroke='%231A63C7'%20stroke-width='5'%20stroke-linecap='round'%20stroke-dasharray='80%2027'%3E%3CanimateTransform%20attributeName='transform'%20type='rotate'%20from='0%2025%2025'%20to='360%2025%2025'%20dur='0.9s'%20repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E");
+      --img-spinner-static: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2050%2050'%3E%3Ccircle%20cx='25'%20cy='25'%20r='22'%20fill='%23fff'%20fill-opacity='.92'/%3E%3Ccircle%20cx='25'%20cy='25'%20r='17'%20fill='none'%20stroke='%23D3E6FA'%20stroke-width='5'/%3E%3Ccircle%20cx='25'%20cy='25'%20r='17'%20fill='none'%20stroke='%231A63C7'%20stroke-width='5'%20stroke-linecap='round'%20stroke-dasharray='80%2027'/%3E%3C/svg%3E");
+    }
+    img[src]:not([src=""]):not(.img-loaded):not(.img-error) {
+      background-image: var(--img-spinner);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: min(34px, 65%);
+    }
+    img.img-loaded, img.img-error { background-image: none; }
+    @media (prefers-reduced-motion: reduce) {
+      img[src]:not([src=""]):not(.img-loaded):not(.img-error) { background-image: var(--img-spinner-static); }
+    }
+    @media print {
+      img { background-image: none !important; }
+    }
+
     .native-shadow { box-shadow: 0 12px 40px rgba(26,99,199,0.12), 0 2px 8px rgba(26,99,199,0.06); }
     .native-shadow-lg { box-shadow: 0 24px 64px rgba(21,83,168,0.22), 0 8px 24px rgba(21,83,168,0.12); }
   
@@ -1201,6 +1221,53 @@
       gardens: "conference"
     };
     const formatUGX = value => `UGX ${Number(value || 0).toLocaleString()}`;
+
+    function initImageLoadingStates(){
+      const isImage = node => node && node.nodeType === 1 && node.tagName === "IMG";
+      const markLoaded = img => {
+        img.classList.remove("img-error");
+        img.classList.add("img-loaded");
+        img.removeAttribute("aria-busy");
+      };
+      const markError = img => {
+        img.classList.add("img-error");
+        img.classList.remove("img-loaded");
+        img.removeAttribute("aria-busy");
+      };
+      const prepare = img => {
+        if(!isImage(img) || !img.getAttribute("src")) return;
+        if(img.complete){
+          if(img.naturalWidth > 0) markLoaded(img);
+          else markError(img);
+          return;
+        }
+        img.classList.remove("img-loaded", "img-error");
+        img.setAttribute("aria-busy", "true");
+      };
+
+      document.querySelectorAll("img").forEach(prepare);
+      document.addEventListener("load", event => {
+        if(isImage(event.target)) markLoaded(event.target);
+      }, true);
+      document.addEventListener("error", event => {
+        if(isImage(event.target)) markError(event.target);
+      }, true);
+
+      new MutationObserver(records => {
+        records.forEach(record => {
+          if(record.type === "attributes"){
+            if(record.attributeName === "src" && isImage(record.target)) prepare(record.target);
+            return;
+          }
+          record.addedNodes.forEach(node => {
+            if(!node || node.nodeType !== 1) return;
+            if(isImage(node)) prepare(node);
+            else node.querySelectorAll?.("img").forEach(prepare);
+          });
+        });
+      }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["src"] });
+    }
+    initImageLoadingStates();
 
     document.addEventListener("DOMContentLoaded", () => {
       const today = formatDateInput(new Date());
